@@ -1,0 +1,396 @@
+
+<div class="customers-page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div>
+      <h1>Customer Management</h1>
+      <p>Manage your registered customers and account access.</p>
+    </div>
+
+    <button class="refresh-btn"
+            (click)="refreshCustomers()"
+            [disabled]="loading">
+      <span>↻</span> Refresh
+    </button>
+  </div>
+
+  <!-- Statistics -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-icon total-icon">👥</div>
+      <div>
+        <p>Total Customers</p>
+        <h2>{{ totalCustomers }}</h2>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon active-icon">✓</div>
+      <div>
+        <p>Active Customers</p>
+        <h2>{{ activeCustomers }}</h2>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon blocked-icon">⊘</div>
+      <div>
+        <p>Blocked Customers</p>
+        <h2>{{ blockedCustomers }}</h2>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Customer Table Section -->
+  <div class="table-section">
+
+    <div class="section-header">
+      <div>
+        <h2>All Customers</h2>
+        <p>View and manage customer accounts.</p>
+      </div>
+
+      <span class="customer-count">
+        {{ filteredCustomers.length }} Customers
+      </span>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="toolbar">
+
+      <div class="search-box">
+        <span>⌕</span>
+        <input
+          type="text"
+          placeholder="Search by name or email..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="applyFilters()">
+      </div>
+
+      <select
+        [(ngModel)]="selectedStatus"
+        (ngModelChange)="applyFilters()">
+
+        <option value="all">All Customers</option>
+        <option value="active">Active</option>
+        <option value="blocked">Blocked</option>
+
+      </select>
+
+    </div>
+
+    <!-- Loading -->
+    @if (loading) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading customers...</p>
+      </div>
+    }
+
+    <!-- Error -->
+    @else if (errorMessage) {
+      <div class="error-state">
+        <p>{{ errorMessage }}</p>
+        <button (click)="refreshCustomers()">Try Again</button>
+      </div>
+    }
+
+    <!-- Customer Table -->
+    @else {
+
+      <div class="table-wrapper">
+
+        <table>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Customer ID</th>
+              <th>Email Address</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @for (customer of paginatedCustomers; track customer.id) {
+              <tr>
+
+                <td>
+                  <div class="customer-info">
+                    <div class="avatar">
+                      {{ customer.name.charAt(0).toUpperCase() }}
+                    </div>
+
+                    <div>
+                      <strong>{{ customer.name }}</strong>
+                      <small>Customer</small>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <span class="customer-id">
+                    #{{ customer.id }}
+                  </span>
+                </td>
+
+                <td>{{ customer.email }}</td>
+
+                <td>
+                  @if (customer.status === 'blocked') {
+                    <span class="status-badge blocked">
+                      <span class="status-dot"></span>
+                      Blocked
+                    </span>
+                  } @else {
+                    <span class="status-badge active">
+                      <span class="status-dot"></span>
+                      Active
+                    </span>
+                  }
+                </td>
+
+                <td>
+                  <div class="action-buttons">
+
+                    <button
+                      class="view-btn"
+                      (click)="viewCustomer(customer)"
+                      title="View customer">
+                      View
+                    </button>
+
+                    @if (customer.status === 'blocked') {
+                      <button
+                        class="unblock-btn"
+                        (click)="openStatusModal(customer)">
+                        Unblock
+                      </button>
+                    } @else {
+                      <button
+                        class="block-btn"
+                        (click)="openStatusModal(customer)">
+                        Block
+                      </button>
+                    }
+
+                  </div>
+                </td>
+
+              </tr>
+            }
+
+            @if (filteredCustomers.length === 0) {
+              <tr>
+                <td colspan="5">
+                  <div class="empty-state">
+                    <span>👥</span>
+                    <h3>No customers found</h3>
+                    <p>Try changing your search or filter.</p>
+                  </div>
+                </td>
+              </tr>
+            }
+
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- Pagination -->
+      @if (filteredCustomers.length > 0) {
+        <div class="pagination">
+
+          <p>
+            Showing
+            {{ (currentPage - 1) * pageSize + 1 }}
+            -
+            {{ (currentPage - 1) * pageSize + paginatedCustomers.length }}
+            of {{ filteredCustomers.length }} customers
+          </p>
+
+          <div class="pagination-buttons">
+
+            <button
+              (click)="changePage(currentPage - 1)"
+              [disabled]="currentPage === 1">
+              Previous
+            </button>
+
+            <span>
+              {{ currentPage }} / {{ totalPages }}
+            </span>
+
+            <button
+              (click)="changePage(currentPage + 1)"
+              [disabled]="currentPage >= totalPages">
+              Next
+            </button>
+
+          </div>
+        </div>
+      }
+
+    }
+
+  </div>
+
+</div>
+
+
+<!-- VIEW CUSTOMER MODAL -->
+@if (showViewModal) {
+  @if (selectedCustomer; as customer) {
+
+    <div class="modal-overlay" (click)="closeViewModal()">
+
+      <div class="modal view-modal"
+           (click)="$event.stopPropagation()">
+
+        <div class="modal-header">
+          <div>
+            <h2>Customer Details</h2>
+            <p>Customer account information</p>
+          </div>
+
+          <button class="close-btn"
+                  (click)="closeViewModal()">
+            ×
+          </button>
+        </div>
+
+        <div class="customer-profile">
+
+          <div class="large-avatar">
+            {{ customer.name.charAt(0).toUpperCase() }}
+          </div>
+
+          <div>
+            <h3>{{ customer.name }}</h3>
+            <p>{{ customer.email }}</p>
+
+            @if (customer.status === 'blocked') {
+              <span class="status-badge blocked">Blocked</span>
+            } @else {
+              <span class="status-badge active">Active</span>
+            }
+          </div>
+
+        </div>
+
+        <div class="details-grid">
+
+          <div class="detail-item">
+            <span>Customer ID</span>
+            <strong>{{ customer.id }}</strong>
+          </div>
+
+          <div class="detail-item">
+            <span>Account Role</span>
+            <strong>{{ customer.role }}</strong>
+          </div>
+
+          <div class="detail-item full-width">
+            <span>Email Address</span>
+            <strong>{{ customer.email }}</strong>
+          </div>
+
+          <div class="detail-item full-width">
+            <span>Account Status</span>
+            <strong>
+              {{ customer.status ?? 'active' }}
+            </strong>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+          <button class="secondary-btn"
+                  (click)="closeViewModal()">
+            Close
+          </button>
+
+          <button
+            [class.unblock-btn]="customer.status === 'blocked'"
+            [class.block-btn]="customer.status !== 'blocked'"
+            (click)="closeViewModal(); openStatusModal(customer)">
+
+            {{ customer.status === 'blocked' ? 'Unblock Customer' : 'Block Customer' }}
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+}
+
+
+<!-- BLOCK / UNBLOCK CONFIRMATION MODAL -->
+@if (showStatusModal) {
+  @if (customerToUpdate; as customer) {
+
+    <div class="modal-overlay">
+
+      <div class="modal confirmation-modal">
+
+        <div class="warning-icon"
+             [class.unblock-warning]="newStatus === 'active'">
+          {{ newStatus === 'blocked' ? '!' : '✓' }}
+        </div>
+
+        <h2>
+          {{ newStatus === 'blocked' ? 'Block Customer?' : 'Unblock Customer?' }}
+        </h2>
+
+        <p>
+          Are you sure you want to
+          {{ newStatus === 'blocked' ? 'block' : 'unblock' }}
+          <strong>{{ customer.name }}</strong>?
+        </p>
+
+        @if (newStatus === 'blocked') {
+          <div class="warning-message">
+            This customer will not be allowed to log in or place new orders
+            once the backend enforces the blocked status.
+          </div>
+        } @else {
+          <div class="success-message">
+            This customer will be allowed to log in again.
+          </div>
+        }
+
+        <div class="confirmation-actions">
+
+          <button
+            class="secondary-btn"
+            (click)="closeStatusModal()">
+            Cancel
+          </button>
+
+          <button
+            [class.confirm-block-btn]="newStatus === 'blocked'"
+            [class.confirm-unblock-btn]="newStatus === 'active'"
+            (click)="confirmStatusUpdate()">
+
+            {{ newStatus === 'blocked' ? 'Yes, Block' : 'Yes, Unblock' }}
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+}

@@ -1,0 +1,192 @@
+<section class="profile-page">
+
+  <div class="profile-container">
+
+    
+    <div class="profile-header">
+      <div>
+        <p class="eyebrow">ELVORO / ACCOUNT</p>
+        <h1>My Account<span>.</span></h1>
+        <p>Manage your personal information and account details.</p>
+      </div>
+    </div>
+
+    
+    <div class="profile-card">
+
+      <div class="profile-top">
+
+        <div class="avatar">
+          {{ initials }}
+        </div>
+
+        <div class="profile-heading">
+          <h2>{{ currentUser?.name }}</h2>
+          <p>{{ currentUser?.email }}</p>
+          <span class="account-badge">Customer Account</span>
+        </div>
+
+        @if (!isEditing) {
+          <button
+            type="button"
+            class="edit-button"
+            (click)="editProfile()"
+          >
+            <span>✎</span> Edit Profile
+          </button>
+        }
+
+      </div>
+
+      <div class="profile-divider"></div>
+
+      
+      <div class="section-heading">
+        <h3>Personal Information</h3>
+        <p>Update your personal account information.</p>
+      </div>
+
+      <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+
+        <div class="form-grid">
+
+          
+          <div class="form-group">
+            <label for="name">Full Name</label>
+
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              [readonly]="!isEditing"
+              placeholder="Enter your name"
+            />
+
+            @if (
+              isEditing &&
+              profileForm.controls.name.touched &&
+              profileForm.controls.name.invalid
+            ) {
+              <small>Please enter at least 3 characters.</small>
+            }
+          </div>
+
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              [readonly]="!isEditing"
+              placeholder="Enter your email"
+            />
+
+            @if (
+              isEditing &&
+              profileForm.controls.email.touched &&
+              profileForm.controls.email.invalid
+            ) {
+              <small>Please enter a valid email address.</small>
+            }
+          </div>
+
+        </div>
+
+        
+        @if (isEditing) {
+
+          <div class="form-actions">
+
+            <button
+              type="button"
+              class="cancel-button"
+              (click)="cancelEdit()"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              class="save-button"
+              [disabled]="loading"
+            >
+              {{ loading ? 'Saving...' : 'Save Changes' }}
+            </button>
+
+          </div>
+
+        }
+
+      </form>
+
+    </div>
+
+  
+<div class="account-card">
+
+  <div>
+    <h3>Account Settings</h3>
+    <p>Manage your Elvoro account.</p>
+  </div>
+
+  <button
+    type="button"
+    class="logout-button"
+    (click)="confirmLogout()"
+  >
+    Logout
+  </button>
+
+</div>
+
+
+@if (showLogoutConfirmation) {
+
+  <div class="modal-overlay" (click)="cancelLogout()">
+
+    <div
+      class="logout-modal"
+      (click)="$event.stopPropagation()"
+    >
+
+      <div class="logout-modal-icon">
+        !
+      </div>
+
+      <h2>Logout Confirmation</h2>
+
+      <p>
+        Are you sure you want to log out of your Elvoro account?
+      </p>
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="cancel-logout"
+          (click)="cancelLogout()"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          class="confirm-logout"
+          (click)="logout()"
+        >
+          Yes, Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}
+
+  </div>
+
+</section>

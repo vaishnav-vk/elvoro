@@ -1,0 +1,249 @@
+
+<section class="cart-page">
+
+  <p class="eyebrow">ELVORO SHOPPING BAG</p>
+  <h1>Your Cart</h1>
+
+  @if (items$ | async; as items) {
+
+    @if (items.length === 0) {
+
+      <div class="empty-cart">
+        <h2>Your cart is empty</h2>
+        <p>Find your next favourite pair in our shoe collection.</p>
+        <a routerLink="/products">Explore Shoes</a>
+      </div>
+
+    } @else {
+
+      <div class="cart-layout">
+
+        <!-- Cart Items -->
+        <div class="cart-items">
+
+          @for (item of items; track item.product.id + '-' + item.size) {
+
+            <article class="cart-item">
+
+              <img
+                [src]="item.product.image"
+                [alt]="item.product.name"
+              />
+
+              <div class="item-info">
+
+                <p class="brand">
+                  {{ item.product.brand }}
+                </p>
+
+                <h2>{{ item.product.name }}</h2>
+
+                <p>Size: {{ item.size }}</p>
+
+                <strong>
+                  {{ item.product.price | currency:'INR':'symbol':'1.0-0' }}
+                </strong>
+
+                <!-- Quantity Controls -->
+                <div class="quantity">
+
+                  <button
+                    type="button"
+                    (click)="decrease(item.product.id, item.size)"
+                    [disabled]="item.quantity <= 1"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+
+                  <span>{{ item.quantity }}</span>
+
+                  <button
+                    type="button"
+                    (click)="increase(item.product.id, item.size, item.quantity)"
+                    [disabled]="item.quantity >= maxQuantity"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+                <!-- Quantity Limit Message -->
+                @if (item.quantity >= maxQuantity) {
+                  <p class="quantity-limit-message">
+                    Maximum quantity of 5 reached!
+                  </p>
+                }
+
+                <!-- Remove Button -->
+                <button
+                  class="remove-button"
+                  type="button"
+                  (click)="remove(item.product.id, item.size)"
+                >
+                  Remove
+                </button>
+
+              </div>
+
+              <!-- Item Total -->
+              <strong class="line-total">
+                {{
+                  item.product.price * item.quantity
+                    | currency:'INR':'symbol':'1.0-0'
+                }}
+              </strong>
+
+            </article>
+
+          }
+
+        </div>
+
+        <!-- Order Summary -->
+        <aside class="summary">
+
+          <h2>Order Summary</h2>
+
+          <div class="summary-line">
+            <span>Subtotal</span>
+
+            <strong>
+              {{ total$ | async | currency:'INR':'symbol':'1.0-0' }}
+            </strong>
+          </div>
+
+          <div class="summary-line">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+
+          <hr />
+
+          <div class="summary-line grand-total">
+            <span>Total</span>
+
+            <strong>
+              {{ total$ | async | currency:'INR':'symbol':'1.0-0' }}
+            </strong>
+          </div>
+
+          <!-- Checkout -->
+          <a routerLink="/checkout" class="checkout-button">
+            Proceed to Checkout
+          </a>
+
+          <!-- Clear Cart -->
+          <button
+            class="clear-button"
+            type="button"
+            (click)="clear()"
+          >
+            Clear Cart
+          </button>
+
+        </aside>
+
+      </div>
+
+    }
+
+  }
+
+  <!-- Remove Product Confirmation Popup -->
+  @if (showRemoveConfirmation) {
+
+    <div
+      class="cart-modal-overlay"
+      (click)="closeRemoveConfirmation()"
+    >
+
+      <div
+        class="cart-confirm-modal"
+        (click)="$event.stopPropagation()"
+      >
+
+        <div class="cart-modal-icon">!</div>
+
+        <h2>Remove Product?</h2>
+
+        <p>
+          Are you sure you want to remove this product from your cart?
+        </p>
+
+        <div class="cart-modal-actions">
+
+          <button
+            type="button"
+            class="keep-cart-btn"
+            (click)="closeRemoveConfirmation()"
+          >
+            No, Keep It
+          </button>
+
+          <button
+            type="button"
+            class="confirm-remove-btn"
+            (click)="confirmRemove()"
+          >
+            Yes, Remove
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+  <!-- Clear Entire Cart Confirmation Popup -->
+  @if (showClearConfirmation) {
+
+    <div
+      class="cart-modal-overlay"
+      (click)="closeClearConfirmation()"
+    >
+
+      <div
+        class="cart-confirm-modal"
+        (click)="$event.stopPropagation()"
+      >
+
+        <div class="cart-modal-icon">!</div>
+
+        <h2>Clear Entire Cart?</h2>
+
+        <p>
+          Are you sure you want to remove all products from your cart?
+          This action cannot be undone.
+        </p>
+
+        <div class="cart-modal-actions">
+
+          <button
+            type="button"
+            class="keep-cart-btn"
+            (click)="closeClearConfirmation()"
+          >
+            No, Keep Cart
+          </button>
+
+          <button
+            type="button"
+            class="confirm-remove-btn"
+            (click)="confirmClear()"
+          >
+            Yes, Clear Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+</section>

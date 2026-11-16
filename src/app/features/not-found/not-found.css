@@ -1,0 +1,86 @@
+.not-found-page {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px;
+  background: #faf9f6;
+}
+
+.not-found-content {
+  max-width: 550px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.error-number {
+  font-size: 110px;
+  font-weight: 700;
+  color: #171717;
+  line-height: 1;
+}
+
+.error-number span,
+.not-found-content h1 span {
+  color: #c49a55;
+}
+
+.not-found-content h1 {
+  font-size: 28px;
+  margin: 20px 0 12px;
+  color: #171717;
+}
+
+.error-description {
+  color: #777;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.not-found-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.not-found-actions a {
+  padding: 12px 22px;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.home-button {
+  background: #171717;
+  color: white;
+}
+
+.shop-button {
+  border: 1px solid #171717;
+  color: #171717;
+}
+
+.not-found-actions a:hover {
+  opacity: 0.8;
+}
+
+.error-footer {
+  margin-top: 55px;
+  color: #888;
+  font-size: 13px;
+}
+
+.error-footer span {
+  color: #171717;
+  font-weight: 700;
+  letter-spacing: 3px;
+}

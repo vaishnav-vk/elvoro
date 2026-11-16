@@ -1,0 +1,110 @@
+<section class="wishlist-page">
+
+  <div class="wishlist-header">
+    <div>
+      <p class="eyebrow">YOUR COLLECTION</p>
+      <h1>My Wishlist</h1>
+      <p>All the styles you love, saved in one place.</p>
+    </div>
+  </div>
+
+  @if (loading$ | async) {
+    <div class="wishlist-loading">
+      Loading your wishlist...
+    </div>
+  }
+
+  @if (items$ | async; as items) {
+
+    @if (items.length === 0 && !(loading$ | async)) {
+
+      <div class="empty-wishlist">
+        <div class="empty-heart">♡</div>
+
+        <h2>Your wishlist is empty</h2>
+
+        <p>
+          Save your favourite shoes and find them here whenever
+          you're ready.
+        </p>
+
+        <a routerLink="/products" class="shop-button">
+          Explore Collection
+        </a>
+      </div>
+
+    } @else {
+
+      <div class="wishlist-grid">
+
+        @for (item of items; track item.id) {
+
+          <article class="wishlist-card">
+
+            <div class="wishlist-image">
+
+              <img
+                [src]="item.product.image"
+                [alt]="item.product.name"
+              />
+
+              <button
+                class="remove-heart"
+                type="button"
+                (click)="remove(item)"
+                aria-label="Remove from wishlist"
+              >
+                ♥
+              </button>
+
+            </div>
+
+            <div class="wishlist-info">
+
+              <p class="brand">
+                {{ item.product.brand }}
+              </p>
+
+              <h3>{{ item.product.name }}</h3>
+
+              <p class="price">
+                {{ item.product.price | currency:'INR':'symbol':'1.0-0' }}
+              </p>
+
+              <p class="available-sizes">
+                Available sizes:
+                {{ item.product.sizes.join(', ') }}
+              </p>
+
+              <div class="wishlist-actions">
+
+                <a
+                  [routerLink]="['/products', item.product.id]"
+                  class="view-button"
+                >
+                  View Product
+                </a>
+
+                <button
+                  type="button"
+                  class="cart-button"
+                  (click)="moveToCart(item)"
+                >
+                  Add to Cart
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    }
+
+  }
+
+</section>

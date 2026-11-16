@@ -1,0 +1,390 @@
+
+<div class="discount-page">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div>
+      <h1>Discount Management</h1>
+      <p>Create and manage your store coupons</p>
+    </div>
+
+  </div>
+
+  <!-- MESSAGE -->
+
+  @if (message) {
+
+    <div
+      class="message"
+      [class.success]="messageType === 'success'"
+      [class.error]="messageType === 'error'">
+
+      {{ message }}
+
+    </div>
+
+  }
+
+  <!-- STATISTICS -->
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <p>Total Coupons</p>
+      <h2>{{ totalCoupons }}</h2>
+    </div>
+
+    <div class="stat-card">
+      <p>Active Coupons</p>
+      <h2>{{ activeCoupons }}</h2>
+    </div>
+
+    <div class="stat-card">
+      <p>Expired / Exhausted</p>
+      <h2>{{ expiredCoupons }}</h2>
+    </div>
+
+  </div>
+
+  <!-- CREATE FORM -->
+
+  <div class="form-card">
+
+    <h2>
+      {{ isEditing ? 'Edit Coupon' : 'Create New Coupon' }}
+    </h2>
+
+    <form
+      [formGroup]="discountForm"
+      (ngSubmit)="saveDiscount()">
+
+      <div class="form-grid">
+
+        <!-- COUPON CODE -->
+
+        <div class="form-group full-width">
+
+          <label>Coupon Code</label>
+
+          <div class="coupon-input">
+
+            <input
+              type="text"
+              formControlName="code"
+              placeholder="Generate coupon code"
+              readonly
+            >
+
+            @if (!isEditing) {
+
+              <button
+                type="button"
+                class="generate-btn"
+                (click)="generateCouponCode()">
+
+                Generate Code
+
+              </button>
+
+            }
+
+          </div>
+
+          @if (!discountForm.controls.code.value) {
+
+            <small>
+              Click Generate Code to create a unique coupon.
+            </small>
+
+          }
+
+        </div>
+
+        <!-- TYPE -->
+
+        <div class="form-group">
+
+          <label>Discount Type</label>
+
+          <select formControlName="type">
+
+            <option value="percentage">Percentage</option>
+
+            <option value="fixed">Fixed Amount</option>
+
+          </select>
+
+        </div>
+
+        <!-- VALUE -->
+
+        <div class="form-group">
+
+          <label>Discount Value</label>
+
+          <input
+            type="number"
+            min="1"
+            formControlName="value"
+            placeholder="Enter discount value"
+          >
+
+        </div>
+
+        <!-- MINIMUM ORDER -->
+
+        <div class="form-group">
+
+          <label>Minimum Order Amount</label>
+
+          <input
+            type="number"
+            min="0"
+            formControlName="minOrder"
+            placeholder="Minimum order amount"
+          >
+
+        </div>
+
+        <!-- MAXIMUM DISCOUNT -->
+
+        <div class="form-group">
+
+          <label>Maximum Discount</label>
+
+          <input
+            type="number"
+            min="0"
+            formControlName="maxDiscount"
+            placeholder="Maximum discount"
+          >
+
+        </div>
+
+        <!-- EXPIRY -->
+
+        <div class="form-group">
+
+          <label>Expiry Date</label>
+
+          <input
+            type="date"
+            formControlName="expiryDate"
+          >
+
+        </div>
+
+        <!-- USAGE LIMIT -->
+
+        <div class="form-group">
+
+          <label>Usage Limit</label>
+
+          <input
+            type="number"
+            min="1"
+            formControlName="usageLimit"
+          >
+
+        </div>
+
+        <!-- STATUS -->
+
+        <div class="form-group">
+
+          <label>Status</label>
+
+          <select formControlName="status">
+
+            <option value="active">Active</option>
+
+            <option value="inactive">Inactive</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <!-- FORM BUTTONS -->
+
+      <div class="buttons">
+
+        <button
+          type="submit"
+          class="save-btn"
+          [disabled]="isSaving">
+
+          {{
+            isSaving
+              ? 'Saving...'
+              : isEditing
+                ? 'Update Coupon'
+                : 'Create Coupon'
+          }}
+
+        </button>
+
+        <button
+          type="button"
+          class="cancel-btn"
+          (click)="resetForm()">
+
+          Cancel
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <!-- COUPON TABLE -->
+
+  <div class="list-card">
+
+    <div class="list-header">
+
+      <h2>All Coupons</h2>
+
+      <input
+        type="text"
+        placeholder="Search coupon..."
+        [value]="searchTerm"
+        (input)="onSearch($event)"
+      >
+
+    </div>
+
+    @if (isLoading) {
+
+      <p class="loading">Loading coupons...</p>
+
+    } @else {
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Coupon Code</th>
+              <th>Type</th>
+              <th>Value</th>
+              <th>Minimum Order</th>
+              <th>Usage</th>
+              <th>Expiry Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            @for (d of filteredDiscounts; track d.id) {
+
+              <tr>
+
+                <td class="coupon-code">
+                  {{ d.code }}
+                </td>
+
+                <td>
+                  {{ d.type }}
+                </td>
+
+                <td>
+                  @if (d.type === 'percentage') {
+                    {{ d.value }}%
+                  } @else {
+                    ₹{{ d.value }}
+                  }
+                </td>
+
+                <td>
+                  ₹{{ d.minOrder }}
+                </td>
+
+                <td>
+                  {{ d.usageCount }} / {{ d.usageLimit }}
+                </td>
+
+                <td>
+                  {{ d.expiryDate }}
+                </td>
+
+                <td>
+
+                  <span
+                    class="status"
+                    [class.active]="getCouponStatus(d) === 'active'"
+                    [class.inactive]="getCouponStatus(d) === 'inactive'"
+                    [class.expired]="getCouponStatus(d) === 'expired'">
+
+                    {{ getCouponStatus(d) }}
+
+                  </span>
+
+                </td>
+
+                <td class="actions">
+
+                  <button
+                    type="button"
+                    class="edit-btn"
+                    (click)="editDiscount(d)">
+
+                    Edit
+
+                  </button>
+
+                  @if (d.id !== undefined) {
+
+                    <button
+                      type="button"
+                      class="delete-btn"
+                      (click)="deleteDiscount(d.id)">
+
+                      Delete
+
+                    </button>
+
+                  }
+
+                </td>
+
+              </tr>
+
+            } @empty {
+
+              <tr>
+
+                <td colspan="8" class="empty">
+
+                  No coupons created yet.
+                  Create your first coupon!
+
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

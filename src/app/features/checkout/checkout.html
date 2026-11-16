@@ -1,0 +1,784 @@
+
+<section class="checkout-page">
+
+  @if (orderPlaced) {
+
+    <!-- ORDER SUCCESS -->
+    <div class="success-card">
+
+      <div class="success-icon">✓</div>
+
+      <h1>Order placed successfully!</h1>
+
+      <p>Thank you for shopping with Elvoro.</p>
+
+      <p>Your order number is:</p>
+
+      <h3>{{ orderNumber }}</h3>
+
+      <p class="demo-note">
+        Your order has been saved successfully.
+        Payment will be collected on delivery.
+      </p>
+
+      <a routerLink="/orders" class="primary-link">
+        View My Orders
+      </a>
+
+      <a routerLink="/products" class="primary-link">
+        Continue Shopping
+      </a>
+
+    </div>
+
+  } @else {
+
+    <!-- PAGE HEADING -->
+    <div class="checkout-header">
+
+      <p class="eyebrow">ELVORO / CHECKOUT</p>
+
+      <h1>Complete your order<span>.</span></h1>
+
+      <p>Just a few details before your new shoes are yours.</p>
+
+    </div>
+
+    @if (checkoutItems$ | async; as items) {
+
+      @if (items.length === 0) {
+
+        <!-- EMPTY CART -->
+        <div class="empty-cart">
+
+          <h2>Your cart is empty</h2>
+
+          <p>Add some shoes before proceeding to checkout.</p>
+
+          <a routerLink="/products" class="primary-link">
+            Browse Shoes
+          </a>
+
+        </div>
+
+      } @else {
+
+        <!-- MAIN TWO-COLUMN LAYOUT -->
+        <div class="checkout-layout">
+
+          <!-- LEFT COLUMN -->
+          <div class="checkout-left">
+
+            <form
+              class="checkout-form"
+              [formGroup]="checkoutForm"
+              (ngSubmit)="placeOrder(items)"
+            >
+
+              <!-- CONTACT AND DELIVERY DETAILS -->
+              <section class="form-section">
+
+                <h2>01. Contact & Delivery Details</h2>
+
+                <!-- SAVED ADDRESS CARD -->
+                @if (
+                  hasSavedAddress &&
+                  savedAddress &&
+                  !editingSavedAddress
+                ) {
+
+                  <div class="saved-address-card">
+
+                    <div class="saved-address-heading">
+
+                      <div>
+                        <span class="saved-address-label">
+                          SAVED ADDRESS
+                        </span>
+
+                        <h3>{{ savedAddress.fullName }}</h3>
+                      </div>
+
+                      <span class="saved-badge">
+                        Saved
+                      </span>
+
+                    </div>
+
+                    <div class="saved-address-details">
+
+                      <p>
+                        {{ savedAddress.email }}
+                      </p>
+
+                      <p>
+                        {{ savedAddress.phone }}
+                      </p>
+
+                      <p>
+                        {{ savedAddress.address }}
+                      </p>
+
+                      <p>
+                        {{ savedAddress.city }},
+                        {{ savedAddress.state }} -
+                        {{ savedAddress.pinCode }}
+                      </p>
+
+                    </div>
+
+                    <!-- SAVED ADDRESS ACTIONS -->
+                    <div class="saved-address-actions">
+
+                      <button
+                        type="button"
+                        class="use-address-btn"
+                        (click)="selectSavedAddress()"
+                      >
+                        {{ useSavedAddress
+                          ? 'Address Selected'
+                          : 'Use This Address' }}
+                      </button>
+
+                      <button
+                        type="button"
+                        class="edit-address-btn"
+                        (click)="editSavedAddress()"
+                      >
+                        Edit Address
+                      </button>
+
+                      <button
+                        type="button"
+                        class="delete-address-btn"
+                        (click)="deleteSavedAddress()"
+                      >
+                        Delete
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                }
+
+                <!-- ADD NEW ADDRESS BUTTON -->
+                @if (hasSavedAddress && !editingSavedAddress) {
+
+                  <button
+                    type="button"
+                    class="add-address-btn"
+                    (click)="selectNewAddress()"
+                  >
+                    + Add New Address
+                  </button>
+
+                }
+
+                <!-- CONTACT AND DELIVERY FORM -->
+                @if (!useSavedAddress) {
+
+                  <div class="address-form-heading">
+
+                    <h3>
+                      {{ editingSavedAddress
+                        ? 'Edit Address'
+                        : 'Enter Delivery Details' }}
+                    </h3>
+
+                    @if (editingSavedAddress) {
+
+                      <button
+                        type="button"
+                        class="cancel-edit-btn"
+                        (click)="selectSavedAddress()"
+                      >
+                        Cancel
+                      </button>
+
+                    }
+
+                  </div>
+
+                  <!-- FULL NAME -->
+                  <div class="form-field">
+
+                    <label for="fullName">
+                      Full name
+                    </label>
+
+                    <input
+                      id="fullName"
+                      type="text"
+                      formControlName="fullName"
+                      placeholder="Enter your full name"
+                    />
+
+                    @if (
+                      checkoutForm.controls.fullName.dirty &&
+                      checkoutForm.controls.fullName.hasError('pattern')
+                    ) {
+                      <small class="error">
+                        Name should contain only letters.
+                      </small>
+                    }
+
+                    @if (
+                      checkoutForm.controls.fullName.dirty &&
+                      checkoutForm.controls.fullName.hasError('minlength')
+                    ) {
+                      <small class="error">
+                        Name must contain at least 3 characters.
+                      </small>
+                    }
+
+                    @if (
+                      checkoutForm.controls.fullName.touched &&
+                      checkoutForm.controls.fullName.hasError('required')
+                    ) {
+                      <small class="error">
+                        Full name is required.
+                      </small>
+                    }
+
+                  </div>
+
+                  <!-- EMAIL -->
+                  <div class="form-field">
+
+                    <label for="email">
+                      Email address
+                    </label>
+
+                    <input
+                      id="email"
+                      type="email"
+                      formControlName="email"
+                      placeholder="you@example.com"
+                      autocomplete="email"
+                    />
+
+                    @if (
+                      checkoutForm.controls.email.touched &&
+                      checkoutForm.controls.email.invalid
+                    ) {
+
+                      <small class="error">
+                        Please enter a valid email address.
+                      </small>
+
+                    }
+
+                  </div>
+
+                  <!-- MOBILE NUMBER -->
+                  <div class="form-field">
+
+                    <label for="phone">
+                      Mobile number
+                    </label>
+
+                    <input
+                      id="phone"
+                      type="tel"
+                      formControlName="phone"
+                      placeholder="10-digit mobile number"
+                      maxlength="10"
+                      inputmode="numeric"
+                      autocomplete="tel"
+                      (input)="checkoutForm.controls.phone.markAsDirty()"
+                    />
+
+                    @if (
+                      checkoutForm.controls.phone.dirty &&
+                      checkoutForm.controls.phone.hasError('pattern')
+                    ) {
+
+                      <small class="error">
+                        Enter a valid 10-digit mobile number. Numbers only.
+                      </small>
+
+                    }
+
+                    @if (
+                      checkoutForm.controls.phone.touched &&
+                      checkoutForm.controls.phone.hasError('required')
+                    ) {
+
+                      <small class="error">
+                        Phone number is required.
+                      </small>
+
+                    }
+
+                  </div>
+
+                  <!-- HOUSE ADDRESS -->
+                  <div class="form-field">
+
+                    <label for="address">
+                      House number and street
+                    </label>
+
+                    <textarea
+                      id="address"
+                      formControlName="address"
+                      placeholder="Enter your complete address"
+                      rows="3"
+                      autocomplete="street-address"
+                    ></textarea>
+
+                    @if (
+                      checkoutForm.controls.address.touched &&
+                      checkoutForm.controls.address.invalid
+                    ) {
+
+                      <small class="error">
+                        Delivery address is required.
+                      </small>
+
+                    }
+
+                  </div>
+
+                  <!-- CITY AND STATE -->
+                  <div class="form-row">
+
+                    <div class="form-field">
+
+                      <label for="city">
+                        City
+                      </label>
+
+                      <input
+                        id="city"
+                        type="text"
+                        formControlName="city"
+                        placeholder="City"
+                        autocomplete="address-level2"
+                      />
+
+                      @if (
+                        checkoutForm.controls.city.touched &&
+                        checkoutForm.controls.city.invalid
+                      ) {
+
+                        <small class="error">
+                          Enter your city.
+                        </small>
+
+                      }
+
+                    </div>
+
+                    <div class="form-field">
+
+                      <label for="state">
+                        State
+                      </label>
+
+                      <input
+                        id="state"
+                        type="text"
+                        formControlName="state"
+                        placeholder="State"
+                        autocomplete="address-level1"
+                      />
+
+                      @if (
+                        checkoutForm.controls.state.touched &&
+                        checkoutForm.controls.state.invalid
+                      ) {
+
+                        <small class="error">
+                          Enter your state.
+                        </small>
+
+                      }
+
+                    </div>
+
+                  </div>
+
+                  <!-- PIN CODE -->
+                  <div class="form-field">
+
+                    <label for="pinCode">
+                      PIN code
+                    </label>
+
+                    <input
+                      id="pinCode"
+                      type="text"
+                      formControlName="pinCode"
+                      placeholder="6-digit PIN code"
+                      maxlength="6"
+                      inputmode="numeric"
+                      autocomplete="postal-code"
+                    />
+
+                    @if (
+                      checkoutForm.controls.pinCode.touched &&
+                      checkoutForm.controls.pinCode.invalid
+                    ) {
+
+                      <small class="error">
+                        Enter a valid 6-digit PIN code.
+                      </small>
+
+                    }
+
+                  </div>
+
+                  <!-- SAVE OR UPDATE ADDRESS -->
+                  <button
+                    type="button"
+                    class="save-address-btn"
+                    [disabled]="addressLoading"
+                    (click)="saveAddressDetails()"
+                  >
+                    @if (addressLoading) {
+                      Saving...
+                    } @else {
+                      {{ editingSavedAddress
+                        ? 'Update Saved Address'
+                        : 'Save Address' }}
+                    }
+                  </button>
+
+                }
+
+                <!-- ADDRESS SUCCESS MESSAGE -->
+                @if (addressMessage) {
+
+                  <p class="address-success-message">
+                    ✓ {{ addressMessage }}
+                  </p>
+
+                }
+
+                <!-- ADDRESS ERROR MESSAGE -->
+                @if (addressError) {
+
+                  <p class="address-error-message">
+                    {{ addressError }}
+                  </p>
+
+                }
+
+              </section>
+
+
+              <!-- PAYMENT METHOD -->
+              <section class="form-section payment-section">
+
+                <h2>02. Payment method</h2>
+
+                <label class="payment-option">
+
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    [checked]="paymentMethod === 'COD'"
+                    (change)="paymentMethod = 'COD'"
+                  />
+
+                  <div class="payment-icon">
+                    💵
+                  </div>
+
+                  <div class="payment-details">
+
+                    <strong>
+                      Cash on Delivery
+                    </strong>
+
+                    <p>
+                      Pay when your order arrives at your doorstep.
+                    </p>
+
+                  </div>
+
+                  <span class="cod-badge">
+                    Available
+                  </span>
+
+                </label>
+
+                <p class="payment-note">
+                  ✓ Pay cash directly to the delivery person.
+                </p>
+
+              </section>
+
+
+              <!-- ORDER ERROR MESSAGE -->
+              @if (orderError) {
+
+                <p class="orders-error">
+                  {{ orderError }}
+                </p>
+
+              }
+
+
+              <!-- PLACE ORDER -->
+              <button
+                type="submit"
+                class="place-order-button"
+                [disabled]="isPlacingOrder || orderPlaced"
+              >
+
+                @if (isPlacingOrder) {
+                  Placing Order...
+                } @else {
+                  Place Order
+                }
+
+              </button>
+
+              <p class="secure-note">
+                Secure order submission · Cash on Delivery
+              </p>
+
+            </form>
+
+          </div>
+
+
+          <!-- RIGHT COLUMN: ORDER SUMMARY -->
+          <aside class="order-summary">
+
+            <div class="summary-heading">
+
+              <h2>Your order</h2>
+
+              <p class="summary-subtitle">
+                {{ items.length }}
+                {{ isBuyNow ? 'selected item(s)' : 'cart item(s)' }}
+              </p>
+
+            </div>
+
+
+            <!-- PRODUCTS -->
+            <div class="summary-products">
+
+              @for (
+                item of items;
+                track item.product.id + '-' + item.size
+              ) {
+
+                <div class="summary-product">
+
+                  <div class="product-image">
+
+                    <img
+                      [src]="item.product.image"
+                      [alt]="item.product.name"
+                    />
+
+                  </div>
+
+                  <div class="summary-product-info">
+
+                    <h3>
+                      {{ item.product.name }}
+                    </h3>
+
+                    <p>
+                      {{ item.product.brand }}
+                    </p>
+
+                    <p>
+                      Size: {{ item.size }}
+                    </p>
+
+                    <p>
+                      Quantity: {{ item.quantity }}
+                    </p>
+
+                    <strong>
+                      {{
+                        item.product.price * item.quantity
+                          | currency:'INR':'symbol':'1.0-0'
+                      }}
+                    </strong>
+
+                  </div>
+
+                </div>
+
+              }
+
+            </div>
+
+
+            <!-- COUPON SECTION -->
+            <section class="coupon-section">
+
+              <h3>Have a Coupon?</h3>
+
+              <div class="coupon-input">
+
+                <input
+                  type="text"
+                  placeholder="Enter coupon code"
+                  [value]="couponInput"
+                  [disabled]="isApplyingCoupon"
+                  (input)="couponInput = $any($event.target).value"
+                />
+
+                <button
+                  type="button"
+                  [disabled]="isApplyingCoupon"
+                  (click)="applyDiscount()"
+                >
+                  {{ isApplyingCoupon ? 'Checking...' : 'Apply' }}
+                </button>
+
+              </div>
+
+
+              <!-- COUPON ERROR -->
+              @if (couponError$ | async; as error) {
+
+                <p class="coupon-error">
+                  {{ error }}
+                </p>
+
+              }
+
+
+              <!-- APPLIED COUPON -->
+              @if (couponCode$ | async; as code) {
+
+                <div class="applied-coupon">
+
+                  <div>
+
+                    <span class="coupon-check">
+                      ✓
+                    </span>
+
+                    <strong>
+                      {{ code }}
+                    </strong>
+
+                    <p>
+                      {{ discountPercentage$ | async | number:'1.0-2' }}%
+                      discount applied!
+                    </p>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    (click)="removeDiscount()"
+                  >
+                    Remove
+                  </button>
+
+                </div>
+
+              }
+
+            </section>
+
+
+            <!-- PRICE DETAILS -->
+            <section class="price-summary">
+
+              <!-- SUBTOTAL -->
+              <div class="summary-line">
+
+                <span>Subtotal</span>
+
+                <span>
+                  {{
+                    (checkoutTotal$ | async)
+                      | currency:'INR':'symbol':'1.0-0'
+                  }}
+                </span>
+
+              </div>
+
+
+              <!-- DELIVERY -->
+              <div class="summary-line">
+
+                <span>Delivery</span>
+
+                <span class="free-delivery">
+                  FREE
+                </span>
+
+              </div>
+
+
+              <!-- DISCOUNT AMOUNT -->
+              <div class="summary-line">
+
+                <span>Discount</span>
+
+                <span class="discount-price">
+                  -{{
+                    (checkoutDiscountAmount$ | async)
+                      | currency:'INR':'symbol':'1.0-0'
+                  }}
+                </span>
+
+              </div>
+
+
+              <!-- DISCOUNT PERCENTAGE -->
+              <div class="summary-line">
+
+                <span>Discount percentage</span>
+
+                <span>
+                  {{ discountPercentage$ | async | number:'1.0-2' }}%
+                </span>
+
+              </div>
+
+
+              <!-- FINAL TOTAL -->
+              <div class="summary-line final-total">
+
+                <strong>
+                  Final Total
+                </strong>
+
+                <strong>
+                  {{
+                    (checkoutFinalTotal$ | async)
+                      | currency:'INR':'symbol':'1.0-0'
+                  }}
+                </strong>
+
+              </div>
+
+            </section>
+
+
+            <!-- DELIVERY MESSAGE -->
+            <div class="delivery-message">
+
+              <span>✓</span>
+
+              Free delivery on this order.
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      }
+
+    }
+
+  }
+
+</section>

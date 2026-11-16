@@ -1,0 +1,217 @@
+
+<section class="products-page">
+
+  <!-- Page Heading -->
+  <div class="page-heading">
+    <p class="eyebrow">ELVORO COLLECTION</p>
+    <h1>Find Your Perfect Pair<span>.</span></h1>
+    <p>Explore shoes made for your everyday style.</p>
+  </div>
+
+  <!-- Search, Filters and Sorting -->
+  <div class="filter-bar">
+
+    <input
+      type="text"
+      placeholder="Search shoes or brands..."
+      aria-label="Search shoes or brands"
+      [value]="searchText"
+      (input)="onSearch($event)"
+    />
+
+    <select
+      aria-label="Filter by category"
+      [value]="selectedCategory"
+      (change)="onCategoryChange($event)"
+    >
+      <option value="All">All Categories</option>
+      <option value="Running">Running</option>
+      <option value="Casual">Casual</option>
+      <option value="Lifestyle">Lifestyle</option>
+    </select>
+
+    <select
+      aria-label="Filter by brand"
+      [value]="selectedBrand"
+      (change)="onBrandChange($event)"
+    >
+      <option value="All">All Brands</option>
+
+      @if (products$ | async; as products) {
+        @for (brand of getBrands(products); track brand) {
+          <option [value]="brand">{{ brand }}</option>
+        }
+      }
+    </select>
+
+    <select
+      aria-label="Sort products"
+      [value]="sortOrder"
+      (change)="onSortChange($event)"
+    >
+      <option value="default">Sort By</option>
+      <option value="low-high">Price: Low to High</option>
+      <option value="high-low">Price: High to Low</option>
+      <option value="name">Name: A to Z</option>
+    </select>
+
+  </div>
+
+  <!-- Loading -->
+  @if (loading$ | async) {
+    <p class="status">Loading shoes...</p>
+  }
+
+  <!-- Error -->
+  @if (error$ | async; as error) {
+    <div class="error-message">
+      <p>{{ error }}</p>
+      <p>Please check that JSON Server is running.</p>
+    </div>
+  }
+
+  <!-- Product List -->
+  @if (products$ | async; as products) {
+
+    @if (filterProducts(products); as filteredProducts) {
+
+      <div class="results-header">
+        <p>{{ filteredProducts.length }} shoes found</p>
+        <span>ELVORO / PRODUCTS</span>
+      </div>
+
+      @if (filteredProducts.length === 0) {
+        <div class="empty-results">
+          <h2>No shoes found</h2>
+          <p>Try another search or change your filters.</p>
+        </div>
+      }
+
+      <div class="product-grid">
+
+        @for (product of getPaginatedProducts(products); track product.id) {
+
+          <article class="product-card">
+
+            <!-- Shoe Image -->
+            <div class="product-image">
+
+              <a
+                class="product-image-link"
+                [routerLink]="['/products', product.id]"
+                [attr.aria-label]="'View ' + product.name"
+              >
+                <img
+                  [src]="product.image"
+                  [alt]="product.name"
+                  loading="lazy"
+                />
+
+                <span class="category">
+                  {{ product.category }}
+                </span>
+
+                <span class="image-arrow">↗</span>
+              </a>
+
+              <!-- Wishlist Button -->
+              @if (wishlistItems$ | async; as wishlistItems) {
+
+                <button
+                  type="button"
+                  class="wishlist-toggle"
+                  [class.active]="wishlistItems.some(item => item.productId === product.id)"
+                  (click)="toggleWishlist(product)"
+                  [attr.aria-label]="
+                    wishlistItems.some(item => item.productId === product.id)
+                      ? 'Remove from wishlist'
+                      : 'Add to wishlist'
+                  "
+                  [attr.aria-pressed]="wishlistItems.some(item => item.productId === product.id)"
+                >
+                  {{
+                    wishlistItems.some(item => item.productId === product.id)
+                      ? '♥'
+                      : '♡'
+                  }}
+                </button>
+
+              }
+
+            </div>
+
+            <!-- Product Information -->
+            <div class="product-info">
+
+              <p class="brand">{{ product.brand }}</p>
+
+              <h2>
+                <a [routerLink]="['/products', product.id]">
+                  {{ product.name }}
+                </a>
+              </h2>
+
+              <p class="description">
+                {{ product.description }}
+              </p>
+
+              <div class="product-bottom">
+
+                <strong class="price">
+                  ₹{{ product.price }}
+                </strong>
+
+                <a
+                  class="view-product-button"
+                  [routerLink]="['/products', product.id]"
+                >
+                  View Details <span>→</span>
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+      <!-- Pagination -->
+      @if (filteredProducts.length > pageSize) {
+
+        <div class="pagination">
+
+          <button
+            (click)="previousPage(products)"
+            [disabled]="currentPage === 1"
+          >
+            Previous
+          </button>
+
+          @for (page of getPages(products); track page) {
+            <button
+              (click)="changePage(page, products)"
+              [class.active]="currentPage === page"
+            >
+              {{ page }}
+            </button>
+          }
+
+          <button
+            (click)="nextPage(products)"
+            [disabled]="currentPage === getTotalPages(products)"
+          >
+            Next
+          </button>
+
+        </div>
+
+      }
+
+    }
+
+  }
+
+</section>

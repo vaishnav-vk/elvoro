@@ -1,0 +1,183 @@
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">THE NEW SEASON COLLECTION</p>
+
+    <h1>
+      Walk Your Way.<br />
+      <span>Own Your Style.</span>
+    </h1>
+
+    <p class="hero-description">
+      Discover your next favourite pair with Elvoro.
+      Premium style, everyday comfort, and sneakers
+      that move with you.
+    </p>
+
+    <div class="hero-actions">
+      <a routerLink="/products" class="primary-button">
+        Shop Collection <span>→</span>
+      </a>
+
+      <a routerLink="/products" class="secondary-button">
+        Explore Shoes
+      </a>
+    </div>
+
+    <div class="hero-note">
+      <span class="note-dot"></span>
+      FIND YOUR NEXT FAVOURITE PAIR
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-circle"></div>
+
+    <div class="hero-shoe">
+      <img
+        src="https://placehold.co/700x500/F0E9DF/252525?text=ELVORO+SNEAKERS"
+        alt="Elvoro sneaker collection"
+      />
+    </div>
+
+    <div class="floating-label">
+      <span>YOUR STYLE</span>
+      <strong>YOUR RULES.</strong>
+    </div>
+
+    <div class="hero-index">01 / ELVORO COLLECTION</div>
+  </div>
+</section>
+
+<!-- BENEFITS STRIP -->
+<section class="benefits">
+  <div>
+    <span class="benefit-number">01</span>
+    <span>Everyday Comfort</span>
+  </div>
+
+  <div>
+    <span class="benefit-number">02</span>
+    <span>Streetwear Style</span>
+  </div>
+
+  <div>
+    <span class="benefit-number">03</span>
+    <span>Find Your Perfect Fit</span>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-section">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">FIND YOUR FIT</p>
+      <h2>Shop by Style<span>.</span></h2>
+    </div>
+
+    <a routerLink="/products" class="text-link">
+      View all shoes ↗
+    </a>
+  </div>
+
+  <div class="category-grid">
+    <a routerLink="/products" class="category-card running">
+      <span class="category-number">01</span>
+      <div>
+        <p>MADE TO MOVE</p>
+        <h3>Running</h3>
+      </div>
+      <span class="category-arrow">↗</span>
+    </a>
+
+    <a routerLink="/products" class="category-card casual">
+      <span class="category-number">02</span>
+      <div>
+        <p>EVERYDAY ESSENTIALS</p>
+        <h3>Casual</h3>
+      </div>
+      <span class="category-arrow">↗</span>
+    </a>
+
+    <a routerLink="/products" class="category-card lifestyle">
+      <span class="category-number">03</span>
+      <div>
+        <p>MAKE A STATEMENT</p>
+        <h3>Lifestyle</h3>
+      </div>
+      <span class="category-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="featured-section">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">HANDPICKED FOR YOU</p>
+      <h2>Trending Pairs<span>.</span></h2>
+    </div>
+
+    <a routerLink="/products" class="text-link">
+      Shop all 25 shoes ↗
+    </a>
+  </div>
+
+  @if (products$ | async; as products) {
+    <div class="featured-grid">
+      @for (product of products.slice(0, 4); track product.id) {
+        <article class="featured-card">
+          <a routerLink="/products" class="featured-image">
+            <img [src]="product.image" [alt]="product.name" />
+
+            <span class="image-tag">
+              {{ product.category }}
+            </span>
+          </a>
+
+          <div class="featured-info">
+            <p class="featured-brand">{{ product.brand }}</p>
+            <h3>{{ product.name }}</h3>
+
+            <div class="featured-bottom">
+              <strong>₹{{ product.price | number }}</strong>
+
+              <button
+                type="button"
+                (click)="addProductToCart(product)"
+                [disabled]="!product.sizes?.length"
+              >
+                Quick Add +
+              </button>
+            </div>
+
+            @if (product.sizes?.length) {
+              <p class="size-note">
+                Quick add uses size {{ product.sizes[0] }}
+              </p>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  }
+</section>
+
+<!-- PROMOTIONAL BANNER -->
+<section class="promo-section">
+  <div class="promo-content">
+    <p class="eyebrow">YOUR NEXT PAIR AWAITS</p>
+    <h2>Good shoes.<br />Great moves.</h2>
+    <p>
+      Your everyday style starts from the ground up.
+      Find a pair that feels like you.
+    </p>
+
+    <a routerLink="/products" class="promo-button">
+      Discover Elvoro ↗
+    </a>
+  </div>
+
+  <div class="promo-mark">E.</div>
+</section>

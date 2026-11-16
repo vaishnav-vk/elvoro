@@ -1,0 +1,87 @@
+
+<header class="navbar">
+
+  <a class="logo" routerLink="/">ELVORO<span>.</span></a>
+
+  <nav>
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Home
+    </a>
+
+    <a routerLink="/products" routerLinkActive="active">
+      Shop Shoes
+    </a>
+
+    <!-- WISHLIST LINK -->
+    <a routerLink="/wishlist" routerLinkActive="active" class="wishlist-link">
+  Wishlist
+
+  @if (wishlistCount$ | async; as count) {
+    @if (count > 0) {
+      <span class="cart-count">{{ count }}</span>
+    }
+  }
+</a>
+
+    <!-- CART LINK -->
+    <a routerLink="/cart" routerLinkActive="active" class="cart-link">
+      Cart
+      <span class="cart-count">{{ cartCount$ | async }}</span>
+    </a>
+
+    <a routerLink="/about" routerLinkActive="active">
+      About
+    </a>
+  </nav>
+
+  <!-- AUTH LINKS -->
+  <div class="auth-links">
+
+    @if (currentUser$ | async; as user) {
+
+      <span>Hi, {{ user.name }}</span>
+
+      <a routerLink="/profile" routerLinkActive="active" class="account-link">
+        My Account
+      </a>
+
+      <a routerLink="/orders" routerLinkActive="active" class="orders-link">
+        My Orders
+      </a>
+
+    } @else {
+
+      <a routerLink="/login">Login</a>
+
+      <a routerLink="/register">Register</a>
+
+    }
+
+  </div>
+
+  <!-- SHARED NOTIFICATION POPUP -->
+  @if (notification$ | async; as notification) {
+
+    <div
+      class="logout-toast"
+      [class.success-toast]="notification.type === 'success'"
+      [class.error-toast]="notification.type === 'error'"
+    >
+
+      <span class="toast-icon">
+        {{ notification.type === 'success' ? '✓' : '!' }}
+      </span>
+
+      <div>
+        <strong>{{ notification.title }}</strong>
+        <p>{{ notification.message }}</p>
+      </div>
+
+    </div>
+  }
+
+</header>

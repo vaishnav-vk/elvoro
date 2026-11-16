@@ -1,0 +1,98 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.navbar {
+  min-height: 76px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 5%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo,
+.footer-logo {
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-decoration: none;
+  color: #171717;
+}
+
+.logo span {
+  color: #956b42;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.navbar nav a {
+  color: #555;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.navbar nav a.active,
+.navbar nav a:hover {
+  color: #956b42;
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-count {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: #171717;
+  color: white;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
+.footer {
+  margin-top: 50px;
+  padding: 35px 20px;
+  text-align: center;
+  background: #171717;
+  color: #ddd;
+}
+
+.footer-logo {
+  color: white;
+  font-size: 22px;
+}
+
+.footer p {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+@media (max-width: 520px) {
+  .navbar {
+    padding: 16px;
+    flex-wrap: wrap;
+  }
+
+  .navbar nav {
+    gap: 16px;
+  }
+
+  .navbar nav a {
+    font-size: 13px;
+  }
+}

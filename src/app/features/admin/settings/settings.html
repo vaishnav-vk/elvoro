@@ -1,0 +1,349 @@
+
+<div class="settings-page">
+
+  <div class="settings-header">
+    <h1>Settings</h1>
+    <p>Manage your Elvoro account and preferences.</p>
+  </div>
+
+  <div class="settings-layout">
+
+    <!-- Sidebar -->
+    <aside class="settings-sidebar">
+
+      <button
+        [class.active]="activeSection === 'profile'"
+        (click)="selectSection('profile')">
+        Profile Settings
+      </button>
+
+      <button
+        [class.active]="activeSection === 'password'"
+        (click)="selectSection('password')">
+        Change Password
+      </button>
+
+      <button
+        [class.active]="activeSection === 'notifications'"
+        (click)="selectSection('notifications')">
+        Notifications
+      </button>
+
+      <button
+        [class.active]="activeSection === 'addresses'"
+        (click)="selectSection('addresses')">
+        Address Management
+      </button>
+
+      <button
+        [class.active]="activeSection === 'privacy'"
+        (click)="selectSection('privacy')">
+        Privacy & Account
+      </button>
+
+    </aside>
+
+    <!-- Main content -->
+    <main class="settings-content">
+
+      <p class="success-message" *ngIf="message">
+        {{ message }}
+      </p>
+
+      <p class="error-message" *ngIf="error">
+        {{ error }}
+      </p>
+
+      <!-- 1. Profile -->
+      <section *ngIf="activeSection === 'profile'">
+        <h2>Profile Settings</h2>
+        <p>Update your personal information.</p>
+
+        <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+
+          <label>Full Name</label>
+          <input type="text" formControlName="name">
+
+          <label>Email Address</label>
+          <input type="email" formControlName="email">
+
+          <button type="submit" [disabled]="loading">
+            {{ loading ? 'Saving...' : 'Save Changes' }}
+          </button>
+
+        </form>
+      </section>
+
+      <!-- 2. Password -->
+      
+<section *ngIf="activeSection === 'password'">
+
+  <h2>Change Password</h2>
+  <p>Keep your Elvoro account secure.</p>
+
+  <form
+    [formGroup]="passwordForm"
+    (ngSubmit)="savePassword()">
+
+    <!-- Current Password -->
+    <label>Current Password</label>
+
+    <input
+      type="password"
+      formControlName="currentPassword">
+
+    <small class="field-error"
+      *ngIf="passwordForm.controls.currentPassword.touched &&
+      passwordForm.controls.currentPassword.hasError('required')">
+      Current password is required.
+    </small>
+
+    <!-- New Password -->
+    <label>New Password</label>
+
+    <input
+      type="password"
+      formControlName="newPassword">
+
+    <small class="field-error"
+      *ngIf="passwordForm.controls.newPassword.touched &&
+      passwordForm.controls.newPassword.hasError('required')">
+      New password is required.
+    </small>
+
+    <small class="field-error"
+      *ngIf="passwordForm.controls.newPassword.hasError('minlength') &&
+      passwordForm.controls.newPassword.touched">
+      Password must contain at least 8 characters.
+    </small>
+
+    <small class="field-error"
+      *ngIf="passwordForm.controls.newPassword.hasError('pattern') &&
+      passwordForm.controls.newPassword.touched">
+      Include uppercase, lowercase, a number and a special character.
+    </small>
+
+    <!-- Confirm Password -->
+    <label>Confirm New Password</label>
+
+    <input
+      type="password"
+      formControlName="confirmPassword">
+
+    <small class="field-error"
+      *ngIf="passwordForm.controls.confirmPassword.touched &&
+      passwordForm.controls.confirmPassword.hasError('required')">
+      Please confirm your new password.
+    </small>
+
+    <small class="field-error"
+      *ngIf="passwordForm.controls.confirmPassword.touched &&
+      passwordForm.hasError('passwordMismatch')">
+      Passwords do not match.
+    </small>
+
+    <button type="submit">
+      Update Password
+    </button>
+
+  </form>
+
+</section>
+
+
+      <!-- 3. Notifications -->
+      <section *ngIf="activeSection === 'notifications'">
+        <h2>Notification Settings</h2>
+        <p>Choose which notifications you want to receive.</p>
+
+        <div class="setting-option">
+          <label>Order Updates</label>
+          <input
+            type="checkbox"
+            [(ngModel)]="notifications.orderUpdates"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="setting-option">
+          <label>Promotional Emails</label>
+          <input
+            type="checkbox"
+            [(ngModel)]="notifications.promotionalEmails"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="setting-option">
+          <label>New Arrivals</label>
+          <input
+            type="checkbox"
+            [(ngModel)]="notifications.newArrivals"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="setting-option">
+          <label>Special Offers</label>
+          <input
+            type="checkbox"
+            [(ngModel)]="notifications.offers"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <button (click)="saveNotifications()">
+          Save Preferences
+        </button>
+      </section>
+
+      <!-- 4. Addresses -->
+      <section *ngIf="activeSection === 'addresses'">
+        <h2>Address Management</h2>
+        <p>Manage your saved delivery addresses.</p>
+
+        <button (click)="openNewAddress()">
+          + Add New Address
+        </button>
+
+        <div class="address-card" *ngFor="let address of addresses">
+
+          <h3>{{ address.fullName }}</h3>
+          <p>{{ address.address }}</p>
+          <p>{{ address.city }}, {{ address.state }}</p>
+          <p>{{ address.pinCode }}</p>
+          <p>{{ address.phone }}</p>
+
+          <button (click)="editAddress(address)">Edit</button>
+          <button (click)="deleteAddress(address)">Delete</button>
+
+        </div>
+
+        
+<form
+  *ngIf="showAddressForm"
+  [formGroup]="addressForm"
+  (ngSubmit)="saveAddress()">
+
+  <h3>{{ editingAddress ? 'Edit Address' : 'Add Address' }}</h3>
+
+  <!-- Full Name -->
+  <label>Full Name</label>
+  <input type="text" formControlName="fullName">
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.fullName.touched && addressForm.controls.fullName.hasError('required')">
+    Full name is required.
+  </small>
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.fullName.touched && addressForm.controls.fullName.hasError('minlength')">
+    Name must contain at least 3 characters.
+  </small>
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.fullName.touched && addressForm.controls.fullName.hasError('pattern')">
+    Only letters and spaces are allowed.
+  </small>
+
+  <!-- Email -->
+  <label>Email</label>
+  <input type="email" formControlName="email">
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.email.touched && addressForm.controls.email.hasError('required')">
+    Email is required.
+  </small>
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.email.touched && addressForm.controls.email.hasError('email')">
+    Enter a valid email address.
+  </small>
+
+  <!-- Phone -->
+  <label>Phone</label>
+  <input type="tel" formControlName="phone" maxlength="10">
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.phone.touched && addressForm.controls.phone.hasError('required')">
+    Phone number is required.
+  </small>
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.phone.touched && addressForm.controls.phone.hasError('pattern')">
+    Enter a valid 10-digit Indian mobile number.
+  </small>
+
+  <!-- Address -->
+  <label>Address</label>
+  <textarea formControlName="address"></textarea>
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.address.touched && addressForm.controls.address.hasError('required')">
+    Address is required.
+  </small>
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.address.touched && addressForm.controls.address.hasError('minlength')">
+    Address must contain at least 10 characters.
+  </small>
+
+  <!-- City -->
+  <label>City</label>
+  <input type="text" formControlName="city">
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.city.touched && addressForm.controls.city.invalid">
+    Enter a valid city name.
+  </small>
+
+  <!-- State -->
+  <label>State</label>
+  <input type="text" formControlName="state">
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.state.touched && addressForm.controls.state.invalid">
+    Enter a valid state name.
+  </small>
+
+  <!-- PIN Code -->
+  <label>PIN Code</label>
+  <input type="text" formControlName="pinCode" maxlength="6">
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.pinCode.touched && addressForm.controls.pinCode.hasError('required')">
+    PIN code is required.
+  </small>
+
+  <small class="field-error"
+    *ngIf="addressForm.controls.pinCode.touched && addressForm.controls.pinCode.hasError('pattern')">
+    PIN code must contain exactly 6 digits.
+  </small>
+
+  <button type="submit">Save Address</button>
+
+  <button type="button" (click)="cancelAddressForm()">
+    Cancel
+  </button>
+
+</form>
+
+      </section>
+
+      <!-- 5. Privacy -->
+      <section *ngIf="activeSection === 'privacy'">
+        <h2>Privacy & Account</h2>
+        <p>Manage your account access.</p>
+
+        <div class="privacy-card">
+          <h3>Logout</h3>
+          <p>Sign out of your Elvoro account.</p>
+          <button (click)="logout()">Logout</button>
+        </div>
+
+        <div class="privacy-card danger">
+          <h3>Delete Account</h3>
+          <p>Permanently delete your account and associated data.</p>
+          <button (click)="deleteAccount()">Delete Account</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>

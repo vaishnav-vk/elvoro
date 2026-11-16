@@ -1,0 +1,480 @@
+
+<div class="orders-page">
+
+  <!-- Page Heading -->
+  <div class="page-heading">
+    <div>
+      <h1>Order Management</h1>
+      <p>Manage and track all customer orders.</p>
+    </div>
+
+    <button class="refresh-btn" (click)="loadOrders()">
+      ↻ Refresh Orders
+    </button>
+  </div>
+
+  <!-- Error Message -->
+  @if (errorMessage) {
+    <div class="error-message">
+      {{ errorMessage }}
+      <button (click)="errorMessage = ''">×</button>
+    </div>
+  }
+
+  <!-- Statistics -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-icon orders-icon">▤</div>
+      <div>
+        <p>Total Orders</p>
+        <h2>{{ totalOrders }}</h2>
+        <span>All customer orders</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon pending-icon">◷</div>
+      <div>
+        <p>Pending Orders</p>
+        <h2>{{ pendingOrders }}</h2>
+        <span>Awaiting processing</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon delivered-icon">✓</div>
+      <div>
+        <p>Delivered Orders</p>
+        <h2>{{ deliveredOrders }}</h2>
+        <span>Successfully delivered</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon revenue-icon">₹</div>
+      <div>
+        <p>Total Revenue</p>
+        <h2>{{ totalRevenue | currency:'INR':'symbol':'1.0-0' }}</h2>
+        <span>Excluding cancelled orders</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Orders Section -->
+  <div class="orders-container">
+
+    <div class="section-heading">
+      <div>
+        <h2>All Orders</h2>
+        <p>View and manage customer purchases.</p>
+      </div>
+
+      <span class="order-count">
+        {{ filteredOrders.length }} Orders
+      </span>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="toolbar">
+
+      <div class="search-box">
+        <span>⌕</span>
+        <input
+          type="text"
+          placeholder="Search order ID, customer or email..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="onSearchChange()"
+        />
+      </div>
+
+      <select
+        class="status-filter"
+        [(ngModel)]="selectedStatus"
+        (ngModelChange)="onStatusChange()"
+      >
+        <option value="All">All Status</option>
+        @for (status of statuses; track status) {
+          <option [value]="status">{{ status }}</option>
+        }
+      </select>
+
+    </div>
+
+    <!-- Loading -->
+    @if (loading) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading orders...</p>
+      </div>
+    }
+
+    <!-- Orders Table -->
+    @if (!loading) {
+
+      @if (paginatedOrders.length > 0) {
+
+        <div class="table-wrapper">
+          <table class="orders-table">
+
+            <thead>
+              <tr>
+                <th>ORDER ID</th>
+                <th>CUSTOMER</th>
+                <th>ITEMS</th>
+                <th>TOTAL</th>
+                <th>PAYMENT</th>
+                <th>STATUS</th>
+                <th>DATE</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              @for (order of paginatedOrders; track order.id) {
+                <tr>
+
+                  <!-- Order ID -->
+                  <td>
+                    <span class="order-id">
+                      {{ order.orderNumber }}
+                    </span>
+                  </td>
+
+                  <!-- Customer -->
+                  <td>
+                    <div class="customer-info">
+                      <div class="customer-avatar">
+                        {{ order.customerName.charAt(0).toUpperCase() }}
+                      </div>
+
+                      <div>
+                        <strong>{{ order.customerName }}</strong>
+                        <small>{{ order.customerEmail }}</small>
+                      </div>
+                    </div>
+                  </td>
+
+                  <!-- Items -->
+                  <td>
+                    <div class="items-info">
+                      <strong>{{ order.items.length }} items</strong>
+                      <small>
+                        {{ order.items[0]?.product?.name }}
+                        @if (order.items.length > 1) {
+                          + {{ order.items.length - 1 }} more
+                        }
+                      </small>
+                    </div>
+                  </td>
+
+                  <!-- Total -->
+                  <td>
+                    <strong class="order-total">
+                      {{ order.finalTotal | currency:'INR':'symbol':'1.0-0' }}
+                    </strong>
+                  </td>
+
+                  <!-- Payment -->
+                  <td>
+                    <span class="payment-badge">
+                      {{ order.paymentMethod }}
+                    </span>
+                  </td>
+
+                  <!-- Status -->
+                  <td>
+                    <span
+                      class="status-badge"
+                      [ngClass]="'status-' + order.status.toLowerCase()"
+                    >
+                      {{ order.status }}
+                    </span>
+                  </td>
+
+                  <!-- Date -->
+                  <td>
+                    <span class="order-date">
+                      {{ order.orderDate | date:'dd MMM yyyy' }}
+                    </span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td>
+                    <div class="action-buttons">
+
+                      <button
+                        class="view-btn"
+                        title="View Order"
+                        (click)="viewOrder(order)"
+                      >
+                        View
+                      </button>
+
+                      <button
+                        class="delete-btn"
+                        title="Delete Order"
+                        (click)="openDeleteModal(order)"
+                      >
+                        Delete
+                      </button>
+
+                    </div>
+                  </td>
+
+                </tr>
+              }
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+
+          <span>
+            Showing
+            {{ (currentPage - 1) * pageSize + 1 }}
+            -
+            {{ (currentPage - 1) * pageSize + paginatedOrders.length }}
+            of {{ filteredOrders.length }} orders
+          </span>
+
+          <div class="pagination-buttons">
+
+            <button
+              [disabled]="currentPage === 1"
+              (click)="changePage(currentPage - 1)"
+            >
+              Previous
+            </button>
+
+            <span class="current-page">
+              {{ currentPage }} / {{ totalPages }}
+            </span>
+
+            <button
+              [disabled]="currentPage === totalPages"
+              (click)="changePage(currentPage + 1)"
+            >
+              Next
+            </button>
+
+          </div>
+        </div>
+
+      } @else {
+
+        <div class="empty-state">
+          <div class="empty-icon">▤</div>
+          <h3>No Orders Found</h3>
+          <p>
+            No orders match your search or selected status.
+          </p>
+          <button
+            (click)="searchTerm = ''; selectedStatus = 'All'; applyFilters()"
+          >
+            Clear Filters
+          </button>
+        </div>
+
+      }
+
+    }
+
+  </div>
+
+</div>
+
+
+<!-- VIEW ORDER MODAL -->
+@if (showViewModal && selectedOrder; as order) {
+
+  <div class="modal-overlay" (click)="closeViewModal()">
+
+    <div
+      class="order-modal"
+      (click)="$event.stopPropagation()"
+    >
+
+      <div class="modal-header">
+        <div>
+          <h2>Order Details</h2>
+          <p>{{ order.orderNumber }}</p>
+        </div>
+
+        <button class="close-btn" (click)="closeViewModal()">×</button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Customer Information -->
+        <div class="detail-section">
+          <h3>Customer Information</h3>
+
+          <div class="detail-grid">
+            <div>
+              <label>Customer Name</label>
+              <strong>{{ order.customerName }}</strong>
+            </div>
+
+            <div>
+              <label>Email</label>
+              <strong>{{ order.customerEmail }}</strong>
+            </div>
+
+            <div>
+              <label>Phone</label>
+              <strong>{{ order.phone }}</strong>
+            </div>
+
+            <div>
+              <label>Order Date</label>
+              <strong>{{ order.orderDate | date:'dd MMM yyyy, h:mm a' }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delivery Address -->
+        <div class="detail-section">
+          <h3>Delivery Address</h3>
+
+          <p class="address-text">
+            {{ order.address }},
+            {{ order.city }},
+            {{ order.state }} -
+            {{ order.pinCode }}
+          </p>
+        </div>
+
+        <!-- Products -->
+        <div class="detail-section">
+          <h3>Ordered Products</h3>
+
+          <div class="product-list">
+
+            @for (item of order.items; track $index) {
+
+              <div class="order-product">
+
+                <img
+                  [src]="item.product.image"
+                  [alt]="item.product.name"
+                />
+
+                <div class="product-details">
+                  <strong>{{ item.product.name }}</strong>
+                  <small>{{ item.product.brand }}</small>
+                  <small>Size: {{ item.size }} | Qty: {{ item.quantity }}</small>
+                </div>
+
+                <strong>
+                  {{ item.product.price * item.quantity | currency:'INR':'symbol':'1.0-0' }}
+                </strong>
+
+              </div>
+
+            }
+
+          </div>
+        </div>
+
+        <!-- Payment Summary -->
+        <div class="detail-section">
+          <h3>Payment Summary</h3>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong>{{ order.subtotal | currency:'INR':'symbol':'1.0-0' }}</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Discount ({{ order.discountPercentage }}%)</span>
+            <strong class="discount-value">
+              - {{ order.discount | currency:'INR':'symbol':'1.0-0' }}
+            </strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Payment Method</span>
+            <strong>{{ order.paymentMethod }}</strong>
+          </div>
+
+          <div class="summary-row final-row">
+            <span>Final Total</span>
+            <strong>{{ order.finalTotal | currency:'INR':'symbol':'1.0-0' }}</strong>
+          </div>
+        </div>
+
+        <!-- Update Status -->
+        <div class="detail-section">
+          <h3>Update Order Status</h3>
+
+          <select
+            class="modal-status-select"
+            [ngModel]="order.status"
+            (ngModelChange)="updateStatus(order, $event)"
+          >
+            @for (status of statuses; track status) {
+              <option [value]="status">{{ status }}</option>
+            }
+          </select>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="secondary-btn" (click)="closeViewModal()">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+}
+
+
+<!-- DELETE CONFIRMATION MODAL -->
+@if (showDeleteModal && orderToDelete; as order) {
+
+  <div class="modal-overlay" (click)="closeDeleteModal()">
+
+    <div
+      class="delete-modal"
+      (click)="$event.stopPropagation()"
+    >
+
+      <div class="warning-icon">!</div>
+
+      <h2>Delete Order?</h2>
+
+      <p>
+        Are you sure you want to delete
+        <strong>{{ order.orderNumber }}</strong>?
+        This action cannot be undone.
+      </p>
+
+      <div class="delete-modal-actions">
+
+        <button
+          class="cancel-btn"
+          (click)="closeDeleteModal()"
+        >
+          Cancel
+        </button>
+
+        <button
+          class="confirm-delete-btn"
+          (click)="confirmDelete()"
+        >
+          Yes, Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+}

@@ -1,0 +1,1861 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Air Max 270",
+      "brand": "Nike",
+      "price": 12999,
+      "image": "https://i5.walmartimages.com/seo/Nike-Air-Max-270-Men-s-Running-Shoes-White-Black-White-AH8050-100_279e90de-804a-4290-93f6-8cdd6fee0c64.1854df18b8f5442413dc093629f67edf.png",
+      "category": "Running",
+      "description": "Comfortable running shoes with responsive cushioning for everyday wear.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Mesh and synthetic upper",
+        "sole": "Rubber with Air cushioning",
+        "color": "White / Black",
+        "closure": "Lace-up",
+        "weight": "Approx. 350 g per shoe",
+        "occasion": "Running and everyday wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Air Force 1",
+      "brand": "Nike",
+      "price": 8999,
+      "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+      "category": "Casual",
+      "description": "Classic sneakers with a clean design for everyday outfits.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Leather upper",
+        "sole": "Rubber",
+        "color": "White",
+        "closure": "Lace-up",
+        "weight": "Approx. 400 g per shoe",
+        "occasion": "Casual wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Dunk Low",
+      "brand": "Nike",
+      "price": 9999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDLw3I8DtaXCdkGBmNaLoVMxvTgnKWrVr_UsXqTFU1Rg&s=10",
+      "category": "Lifestyle",
+      "description": "Low-top sneakers with a timeless basketball-inspired design.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Leather and synthetic upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 350 g per shoe",
+        "occasion": "Lifestyle and casual wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Pegasus 41",
+      "brand": "Nike",
+      "price": 11499,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPxZAnfD31EJyP32Mi4Cp-qfqQEHHtKvsow5xeNAWjmw&s=10",
+      "category": "Running",
+      "description": "Versatile running shoes designed for daily training and comfort.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "specifications": {
+        "material": "Engineered mesh",
+        "sole": "Rubber with ReactX foam cushioning",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 300 g per shoe",
+        "occasion": "Daily running and training",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Revolution 7",
+      "brand": "Nike",
+      "price": 3999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+      "category": "Running",
+      "description": "Lightweight running shoes for walking, jogging and daily activities.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Mesh and synthetic upper",
+        "sole": "Rubber with foam cushioning",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 280 g per shoe",
+        "occasion": "Walking and light running",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Ultraboost 5",
+      "brand": "Adidas",
+      "price": 15999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdtQdE-VBCJwyn34NapYNiNgDE3XYiqI0ZcQ5WwCIYdA&s=10",
+      "category": "Running",
+      "description": "Cushioned running shoes designed for comfortable movement.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Textile upper",
+        "sole": "Rubber with Boost cushioning",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 300 g per shoe",
+        "occasion": "Running and everyday wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Superstar",
+      "brand": "Adidas",
+      "price": 7999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHcuS5fEfMjIHx-pa50iLpAFNJBAR1Gpt0XCDtPmwAnA&s=10",
+      "category": "Casual",
+      "description": "Iconic shell-toe sneakers suitable for casual outfits.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Leather and synthetic upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 350 g per shoe",
+        "occasion": "Casual and lifestyle wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Stan Smith",
+      "brand": "Adidas",
+      "price": 6999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSriDju3IKq10aFyctVEcFQn6-eY-fUSa5yLuxAUI6VvQ&s=10",
+      "category": "Lifestyle",
+      "description": "Minimal sneakers with a clean and versatile appearance.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Leather upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 320 g per shoe",
+        "occasion": "Casual and lifestyle wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Forum Low",
+      "brand": "Adidas",
+      "price": 8999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm_vEGthwqkefTHutp19KmXFl3afs3SnHyftO10zL62g&s=10",
+      "category": "Lifestyle",
+      "description": "Basketball-inspired sneakers with a retro streetwear style.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Leather and synthetic upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 400 g per shoe",
+        "occasion": "Lifestyle and streetwear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Runfalcon 5",
+      "brand": "Adidas",
+      "price": 4499,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4PzLIugDFi9bgJFnTVCvLAaqboMILUlPqCQLYxHDsLg&s",
+      "category": "Running",
+      "description": "Everyday running shoes for light workouts and walking.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Mesh and synthetic upper",
+        "sole": "Rubber with EVA cushioning",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 280 g per shoe",
+        "occasion": "Running and walking",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "11",
+      "name": "RS-X",
+      "brand": "Puma",
+      "price": 7999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYDxWoiXl3ZwS9iRQQyaXaFr_xgL5azeWidnB_N87GEA&s=10",
+      "category": "Lifestyle",
+      "description": "Bold sneakers featuring a chunky silhouette and sporty design.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "specifications": {
+        "material": "Mesh, suede and synthetic overlays",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 400 g per shoe",
+        "occasion": "Lifestyle and streetwear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Smash v2",
+      "brand": "Puma",
+      "price": 3499,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaGnnbRbYv1R46s71PekRXysChYgs9vv9KnNBtptsbA&s=10",
+      "category": "Casual",
+      "description": "Tennis-inspired sneakers for everyday casual wear.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Synthetic leather upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 330 g per shoe",
+        "occasion": "Casual and everyday wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Velocity Nitro 3",
+      "brand": "Puma",
+      "price": 10999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGZ6n2kfErFHh1yJaMqlW8d103wdrPmkDuBLxhUohYKQ&s=10",
+      "category": "Running",
+      "description": "Running shoes designed for cushioned daily training.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Engineered mesh",
+        "sole": "NITRO foam with rubber outsole",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 265 g per shoe",
+        "occasion": "Daily running and training",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Caven 2.0",
+      "brand": "Puma",
+      "price": 4999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvy-TlWBs0Ax7Y-FVraA5F-ewrL9wCl_3O5qw8qKS7yg&s=10",
+      "category": "Lifestyle",
+      "description": "Retro basketball-inspired sneakers for casual styling.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Synthetic leather upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 400 g per shoe",
+        "occasion": "Lifestyle and casual wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "15",
+      "name": "FlexFocus Lite",
+      "brand": "Puma",
+      "price": 2999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLRc2td0uTJef6_fV1bA0vdqddl6CAwqOhRn5KxZfj_w&s",
+      "category": "Training",
+      "description": "Lightweight shoes for gym sessions, walking and daily use.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Synthetic textile upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Verify product specification",
+        "occasion": "Training and everyday wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "16",
+      "name": "574 Core",
+      "brand": "New Balance",
+      "price": 8999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJzE3gl9zTfpFiT4iktL42QQfUPNx2cpILtJiop4RzLw&s=10",
+      "category": "Lifestyle",
+      "description": "Classic lifestyle sneakers combining retro styling and comfort.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Suede and mesh upper",
+        "sole": "Rubber with ENCAP midsole",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 330 g per shoe",
+        "occasion": "Lifestyle and casual wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Fresh Foam 1080",
+      "brand": "New Balance",
+      "price": 15999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFNW6u-gfGqM4GQx8hAVtAtoPsRVXHfynGhmT3kiBOA&s=10",
+      "category": "Running",
+      "description": "Cushioned running shoes designed for comfortable long-distance runs.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "specifications": {
+        "material": "Engineered mesh",
+        "sole": "Fresh Foam X midsole with rubber outsole",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 300 g per shoe",
+        "occasion": "Long-distance running",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "18",
+      "name": "327",
+      "brand": "New Balance",
+      "price": 9999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxwMO42loroTzcwM8BvE_eOoOAvpRGOD5fnUiuTkhVYQ&s=10",
+      "category": "Lifestyle",
+      "description": "Retro-inspired sneakers with a distinctive modern silhouette.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Suede, mesh and synthetic overlays",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 300 g per shoe",
+        "occasion": "Lifestyle and casual wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Gel-Kayano 31",
+      "brand": "Asics",
+      "price": 14999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeqf92ZXC82htUniwd3ZgiuHcL7zS2eULhR8ZmYngDQ&s=10",
+      "category": "Running",
+      "description": "Supportive running shoes designed for stability and comfort.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Engineered mesh",
+        "sole": "Rubber with FF BLAST PLUS ECO cushioning",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 300 g per shoe",
+        "occasion": "Running and stability support",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Gel-Contend 9",
+      "brand": "Asics",
+      "price": 4999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzKYGr421ho-ALVqBR1ctmvOYIW4TiIjPDfv_4-BAfAA&s=10",
+      "category": "Running",
+      "description": "Practical running shoes for everyday exercise and walking.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Mesh and synthetic overlays",
+        "sole": "Rubber with AMPLIFOAM PLUS cushioning",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 280 g per shoe",
+        "occasion": "Running and walking",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Chuck Taylor All Star",
+      "brand": "Converse",
+      "price": 4999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV7XRV-WFq39mUEVsyAUN3WsT1FG6wQJYrQ-8Pr0PVIw&s=10",
+      "category": "Casual",
+      "description": "Classic canvas sneakers for casual and streetwear outfits.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Canvas upper",
+        "sole": "Vulcanized rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 350 g per shoe",
+        "occasion": "Casual and streetwear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Old Skool",
+      "brand": "Vans",
+      "price": 5999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREtfUNeRpY4RZfTrW0udEFbH1tIgWTuf8gTRlJ1uAYHg&s=10",
+      "category": "Skate",
+      "description": "Skate-inspired sneakers with a distinctive side stripe.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Canvas and suede upper",
+        "sole": "Rubber waffle outsole",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 350 g per shoe",
+        "occasion": "Skateboarding and casual wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Classic Leather",
+      "brand": "Reebok",
+      "price": 6499,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJHw3POLJrv5NWydg4zR4ZJefkW-HCp9pBbb5uQoOlrw&s=10",
+      "category": "Lifestyle",
+      "description": "Classic sneakers with a timeless everyday design.",
+      "sizes": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "specifications": {
+        "material": "Leather upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 330 g per shoe",
+        "occasion": "Lifestyle and casual wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Court Vision Low",
+      "brand": "Nike",
+      "price": 5499,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR56NDkdmgO7qPPlD8kL4o3fMhjZTD_wm-SdJqijDA-0g&s=10",
+      "category": "Basketball",
+      "description": "Basketball-inspired low-top sneakers with a sporty casual look.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "specifications": {
+        "material": "Leather and synthetic upper",
+        "sole": "Rubber",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 350 g per shoe",
+        "occasion": "Casual and basketball-inspired wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Cloud 5",
+      "brand": "On",
+      "price": 13999,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_TS7za4uecDxiUOMyYOTBI_XgHQJwtn3vb0f1RmMutA&s=10",
+      "category": "Lifestyle",
+      "description": "Lightweight everyday shoes designed for comfortable walking.",
+      "sizes": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "specifications": {
+        "material": "Mesh and synthetic upper",
+        "sole": "Rubber with CloudTec cushioning",
+        "color": "Varies by colorway",
+        "closure": "Lace-up",
+        "weight": "Approx. 250 g per shoe",
+        "occasion": "Walking and everyday wear",
+        "countryOfOrigin": "Verify manufacturer label"
+      }
+    }
+  ],
+  "address": [
+    {
+      "userId": "LIbdBz1TxDg",
+      "fullName": "VAISHNAV VK",
+      "email": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "id": "g2xQJRspeME"
+    },
+    {
+      "userId": "3bdf85R__dM",
+      "fullName": "VAISHN",
+      "email": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "id": "v3TFlangZ7E"
+    },
+    {
+      "userId": "hWCiwztVg2c",
+      "fullName": "VAISHNAV VK",
+      "email": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "id": "f5ayl76wsXM"
+    },
+    {
+      "userId": "pekSwOhXdwg",
+      "fullName": "VAISHNAV VK",
+      "email": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "id": "pZloScZwhZQ"
+    }
+  ],
+  "discounts": [
+    {
+      "code": "ELVORO7OTN5U",
+      "type": "percentage",
+      "value": 30,
+      "minOrder": 3000,
+      "maxDiscount": 200,
+      "expiryDate": "2026-11-21",
+      "usageLimit": 100,
+      "status": "active",
+      "usageCount": 0,
+      "id": "qezTo2Nutbg"
+    },
+    {
+      "code": "ELVORO6P76WG",
+      "type": "percentage",
+      "value": 50,
+      "minOrder": 1,
+      "maxDiscount": 0,
+      "expiryDate": "2026-11-18",
+      "usageLimit": 10,
+      "status": "active",
+      "usageCount": 0,
+      "id": "P57RjuwdTas"
+    },
+    {
+      "code": "ELVOROSD1V1H",
+      "type": "percentage",
+      "value": 20,
+      "minOrder": 0,
+      "maxDiscount": 0,
+      "expiryDate": "2026-11-17",
+      "usageLimit": 100,
+      "status": "active",
+      "usageCount": 0,
+      "id": "P8clyVISgdA"
+    }
+  ],
+  "wishlist": [
+    {
+      "userEmail": "vaishnavanand147@gmail.com",
+      "productId": "1",
+      "product": {
+        "id": "1",
+        "name": "Air Max 270",
+        "brand": "Nike",
+        "price": 12999,
+        "image": "https://i5.walmartimages.com/seo/Nike-Air-Max-270-Men-s-Running-Shoes-White-Black-White-AH8050-100_279e90de-804a-4290-93f6-8cdd6fee0c64.1854df18b8f5442413dc093629f67edf.png",
+        "category": "Running",
+        "description": "Comfortable running shoes with responsive cushioning for everyday wear.",
+        "sizes": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "specifications": {
+          "material": "Mesh and synthetic upper",
+          "sole": "Rubber with Air cushioning",
+          "color": "White / Black",
+          "closure": "Lace-up",
+          "weight": "Approx. 350 g per shoe",
+          "occasion": "Running and everyday wear",
+          "countryOfOrigin": "Verify manufacturer label"
+        }
+      },
+      "id": "uMp4HOOjsGc"
+    },
+    {
+      "userEmail": "athul@gmail.com",
+      "productId": "2",
+      "product": {
+        "id": "2",
+        "name": "Air Force 1",
+        "brand": "Nike",
+        "price": 8999,
+        "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+        "category": "Casual",
+        "description": "Classic sneakers with a clean design for everyday outfits.",
+        "sizes": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "specifications": {
+          "material": "Leather upper",
+          "sole": "Rubber",
+          "color": "White",
+          "closure": "Lace-up",
+          "weight": "Approx. 400 g per shoe",
+          "occasion": "Casual wear",
+          "countryOfOrigin": "Verify manufacturer label"
+        }
+      },
+      "id": "pdkyHmCzd6s"
+    }
+  ],
+  "orders": [
+    {
+      "orderNumber": "ELV-17231312",
+      "userEmail": "vaishnavanand147@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "1",
+            "name": "Air Max 270",
+            "brand": "Nike",
+            "price": 12999,
+            "image": "https://i5.walmartimages.com/seo/Nike-Air-Max-270-Men-s-Running-Shoes-White-Black-White-AH8050-100_279e90de-804a-4290-93f6-8cdd6fee0c64.1854df18b8f5442413dc093629f67edf.png",
+            "category": "Running",
+            "description": "Comfortable running shoes with responsive cushioning for everyday wear.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with Air cushioning",
+              "color": "White / Black",
+              "closure": "Lace-up",
+              "weight": "Approx. 350 g per shoe",
+              "occasion": "Running and everyday wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 6,
+          "quantity": 1
+        },
+        {
+          "product": {
+            "id": "1",
+            "name": "Air Max 270",
+            "brand": "Nike",
+            "price": 12999,
+            "image": "https://i5.walmartimages.com/seo/Nike-Air-Max-270-Men-s-Running-Shoes-White-Black-White-AH8050-100_279e90de-804a-4290-93f6-8cdd6fee0c64.1854df18b8f5442413dc093629f67edf.png",
+            "category": "Running",
+            "description": "Comfortable running shoes with responsive cushioning for everyday wear.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with Air cushioning",
+              "color": "White / Black",
+              "closure": "Lace-up",
+              "weight": "Approx. 350 g per shoe",
+              "occasion": "Running and everyday wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 25998,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 25998,
+      "paymentMethod": "COD",
+      "status": "Delivered",
+      "orderDate": "2026-11-09T09:40:31.312Z",
+      "id": "yxYWWPq0i7Y"
+    },
+    {
+      "orderNumber": "ELV-72656360",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Shipped",
+      "orderDate": "2026-11-11T04:50:56.360Z",
+      "id": "gVJ8v9fGiXU"
+    },
+    {
+      "orderNumber": "ELV-72657481",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Cancelled",
+      "orderDate": "2026-11-11T04:50:57.481Z",
+      "id": "idD-QXz9o5A"
+    },
+    {
+      "orderNumber": "ELV-72670186",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "5",
+            "name": "Revolution 7",
+            "brand": "Nike",
+            "price": 3999,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+            "category": "Running",
+            "description": "Lightweight running shoes for walking, jogging and daily activities.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with foam cushioning",
+              "color": "Varies by colorway",
+              "closure": "Lace-up",
+              "weight": "Approx. 280 g per shoe",
+              "occasion": "Walking and light running",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 3999,
+      "paymentMethod": "COD",
+      "status": "Delivered",
+      "orderDate": "2026-11-11T04:51:10.186Z",
+      "id": "6r2H_8GVQxo"
+    },
+    {
+      "orderNumber": "ELV-72671105",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "5",
+            "name": "Revolution 7",
+            "brand": "Nike",
+            "price": 3999,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+            "category": "Running",
+            "description": "Lightweight running shoes for walking, jogging and daily activities.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with foam cushioning",
+              "color": "Varies by colorway",
+              "closure": "Lace-up",
+              "weight": "Approx. 280 g per shoe",
+              "occasion": "Walking and light running",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 3999,
+      "paymentMethod": "COD",
+      "status": "Delivered",
+      "orderDate": "2026-11-11T04:51:11.105Z",
+      "id": "I-ZI1yXmjV4"
+    },
+    {
+      "orderNumber": "ELV-89508182",
+      "userEmail": "vai@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T09:31:48.182Z",
+      "id": "EfqCsnofQXs"
+    },
+    {
+      "orderNumber": "ELV-89508409",
+      "userEmail": "vai@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Shipped",
+      "orderDate": "2026-11-11T09:31:48.409Z",
+      "id": "VDOh1_EQcm4"
+    },
+    {
+      "orderNumber": "ELV-90269214",
+      "userEmail": "athul@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T09:44:29.215Z",
+      "id": "RymYGdv5QNo"
+    },
+    {
+      "orderNumber": "ELV-90270147",
+      "userEmail": "athul@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T09:44:30.147Z",
+      "id": "cG77RxgdpQA"
+    },
+    {
+      "orderNumber": "ELV-90281810",
+      "userEmail": "athul@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "5",
+            "name": "Revolution 7",
+            "brand": "Nike",
+            "price": 3999,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+            "category": "Running",
+            "description": "Lightweight running shoes for walking, jogging and daily activities.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with foam cushioning",
+              "color": "Varies by colorway",
+              "closure": "Lace-up",
+              "weight": "Approx. 280 g per shoe",
+              "occasion": "Walking and light running",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 3999,
+      "paymentMethod": "COD",
+      "status": "Cancelled",
+      "orderDate": "2026-11-11T09:44:41.810Z",
+      "id": "Xa1hs0SHYYk"
+    },
+    {
+      "orderNumber": "ELV-90282560",
+      "userEmail": "athul@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "5",
+            "name": "Revolution 7",
+            "brand": "Nike",
+            "price": 3999,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+            "category": "Running",
+            "description": "Lightweight running shoes for walking, jogging and daily activities.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with foam cushioning",
+              "color": "Varies by colorway",
+              "closure": "Lace-up",
+              "weight": "Approx. 280 g per shoe",
+              "occasion": "Walking and light running",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 3999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T09:44:42.560Z",
+      "id": "WbPlp8JECzg"
+    },
+    {
+      "orderNumber": "ELV-91194682",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHN",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T09:59:54.682Z",
+      "id": "tTLYW-oXDkU"
+    },
+    {
+      "orderNumber": "ELV-91194908",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHN",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T09:59:54.908Z",
+      "id": "kmlZCLxSIBA"
+    },
+    {
+      "orderNumber": "ELV-91387166",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHN",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "5",
+            "name": "Revolution 7",
+            "brand": "Nike",
+            "price": 3999,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+            "category": "Running",
+            "description": "Lightweight running shoes for walking, jogging and daily activities.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with foam cushioning",
+              "color": "Varies by colorway",
+              "closure": "Lace-up",
+              "weight": "Approx. 280 g per shoe",
+              "occasion": "Walking and light running",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 3999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T10:03:07.166Z",
+      "id": "bnxPLL3G1vw"
+    },
+    {
+      "orderNumber": "ELV-91389931",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHN",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "5",
+            "name": "Revolution 7",
+            "brand": "Nike",
+            "price": 3999,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+            "category": "Running",
+            "description": "Lightweight running shoes for walking, jogging and daily activities.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with foam cushioning",
+              "color": "Varies by colorway",
+              "closure": "Lace-up",
+              "weight": "Approx. 280 g per shoe",
+              "occasion": "Walking and light running",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 3999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T10:03:09.932Z",
+      "id": "SEK1R8e1vpA"
+    },
+    {
+      "orderNumber": "ELV-92149978",
+      "userEmail": "athul@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "5",
+            "name": "Revolution 7",
+            "brand": "Nike",
+            "price": 3999,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+            "category": "Running",
+            "description": "Lightweight running shoes for walking, jogging and daily activities.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with foam cushioning",
+              "color": "Varies by colorway",
+              "closure": "Lace-up",
+              "weight": "Approx. 280 g per shoe",
+              "occasion": "Walking and light running",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 3999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T10:15:49.978Z",
+      "id": "Qnf44I_JtMs"
+    },
+    {
+      "orderNumber": "ELV-92150199",
+      "userEmail": "athul@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "5",
+            "name": "Revolution 7",
+            "brand": "Nike",
+            "price": 3999,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5L2uBUoVywjnm2_NX5g1pKRDVgTHsvthbvpbIrvn6ig&s=10",
+            "category": "Running",
+            "description": "Lightweight running shoes for walking, jogging and daily activities.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with foam cushioning",
+              "color": "Varies by colorway",
+              "closure": "Lace-up",
+              "weight": "Approx. 280 g per shoe",
+              "occasion": "Walking and light running",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 3999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T10:15:50.199Z",
+      "id": "TnfulLk7dSo"
+    },
+    {
+      "orderNumber": "ELV-92560663",
+      "userEmail": "athul@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T10:22:40.663Z",
+      "id": "evyeKwDWt2g"
+    },
+    {
+      "orderNumber": "ELV-93001607",
+      "userEmail": "athul@gmail.com",
+      "customerName": "VAISHNAV VK",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "1",
+            "name": "Air Max 270",
+            "brand": "Nike",
+            "price": 12999,
+            "image": "https://i5.walmartimages.com/seo/Nike-Air-Max-270-Men-s-Running-Shoes-White-Black-White-AH8050-100_279e90de-804a-4290-93f6-8cdd6fee0c64.1854df18b8f5442413dc093629f67edf.png",
+            "category": "Running",
+            "description": "Comfortable running shoes with responsive cushioning for everyday wear.",
+            "sizes": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Mesh and synthetic upper",
+              "sole": "Rubber with Air cushioning",
+              "color": "White / Black",
+              "closure": "Lace-up",
+              "weight": "Approx. 350 g per shoe",
+              "occasion": "Running and everyday wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 12999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 12999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-11T10:30:01.607Z",
+      "id": "uXJ8Vr0LQl8"
+    },
+    {
+      "orderNumber": "ELV-29062989",
+      "userEmail": "ashish@gmail.com",
+      "customerName": "VAISHN",
+      "customerEmail": "vaishnavanand147@gmail.com",
+      "phone": "8547561200",
+      "address": "Sree Andaman,vadakkekkara\nMakara kakkodi",
+      "city": "Kozhikode",
+      "state": "Kerala",
+      "pinCode": "673611",
+      "items": [
+        {
+          "product": {
+            "id": "2",
+            "name": "Air Force 1",
+            "brand": "Nike",
+            "price": 8999,
+            "image": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-CW2288-111_1.jpg?rnd=20200526195200&tr=w-1536",
+            "category": "Casual",
+            "description": "Classic sneakers with a clean design for everyday outfits.",
+            "sizes": [
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "specifications": {
+              "material": "Leather upper",
+              "sole": "Rubber",
+              "color": "White",
+              "closure": "Lace-up",
+              "weight": "Approx. 400 g per shoe",
+              "occasion": "Casual wear",
+              "countryOfOrigin": "Verify manufacturer label"
+            }
+          },
+          "size": 8,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 8999,
+      "discount": 0,
+      "discountPercentage": 0,
+      "finalTotal": 8999,
+      "paymentMethod": "COD",
+      "status": "Pending",
+      "orderDate": "2026-11-14T04:04:22.990Z",
+      "id": "vUKuLiM3A-w"
+    }
+  ],
+  "users": [
+    {
+      "name": "vaishnav",
+      "email": "vaishnavanand147@gmail.com",
+      "password": "Werty0987",
+      "role": "user",
+      "id": "LIbdBz1TxDg",
+      "status": "active"
+    },
+    {
+      "name": "elvoro",
+      "email": "elvoro@gmail.com",
+      "password": "Mnbvc0987",
+      "role": "admin",
+      "id": "58PDnwmX-lE",
+      "status": "active"
+    },
+    {
+      "name": "ashish",
+      "email": "ashish@gmail.com",
+      "password": "Mnbvc0987",
+      "role": "user",
+      "id": "3bdf85R__dM",
+      "status": "active"
+    },
+    {
+      "name": "vai",
+      "email": "vai@gmail.com",
+      "password": "Mnbvc0987",
+      "role": "user",
+      "status": "blocked",
+      "id": "hWCiwztVg2c"
+    },
+    {
+      "name": "athul",
+      "email": "athul@gmail.com",
+      "password": "Mnbvc0987",
+      "role": "user",
+      "status": "active",
+      "id": "pekSwOhXdwg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

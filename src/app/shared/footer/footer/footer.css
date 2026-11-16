@@ -1,0 +1,35 @@
+.footer {
+  background: #171717;
+  color: #ffffff;
+  padding: 45px 6% 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer-content {
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.footer-content p {
+  color: #b5b5b5;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #3a3a3a;
+  padding-top: 20px;
+}
+
+.footer-bottom p {
+  color: #999999;
+  font-size: 12px;
+}

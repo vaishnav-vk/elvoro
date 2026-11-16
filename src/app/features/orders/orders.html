@@ -1,0 +1,198 @@
+<section class="orders-page">
+
+  <div class="orders-header">
+    <p class="eyebrow">ELVORO / ACCOUNT</p>
+    <h1>My Orders<span>.</span></h1>
+    <p>Track your purchases and manage your orders.</p>
+  </div>
+
+  @if (loading) {
+    <div class="orders-message">
+      Loading your orders...
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="orders-error">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!loading && orders.length === 0 && !errorMessage) {
+    <div class="empty-orders">
+      <div class="empty-icon">📦</div>
+      <h2>No orders yet</h2>
+      <p>Your orders will appear here after you make a purchase.</p>
+
+      <a routerLink="/products" class="shop-button">
+        Start Shopping
+      </a>
+    </div>
+  }
+
+  @if (!loading && orders.length > 0) {
+
+    <div class="orders-count">
+      {{ orders.length }} order(s) found
+    </div>
+
+    <div class="orders-list">
+
+      @for (order of orders; track order.id) {
+
+        <article class="order-card">
+
+          <!-- Order Header -->
+          <div class="order-top">
+
+            <div>
+              <span class="order-label">ORDER NUMBER</span>
+              <h3>{{ order.orderNumber }}</h3>
+            </div>
+
+            <span
+              class="order-status"
+              [class.cancelled]="order.status === 'Cancelled'"
+            >
+              {{ order.status }}
+            </span>
+
+          </div>
+
+          <!-- Order Date -->
+          <div class="order-date">
+            Ordered on {{ order.orderDate | date:'dd MMM yyyy, h:mm a' }}
+          </div>
+
+          <!-- Products -->
+          <div class="order-products">
+
+            @for (
+              item of order.items;
+              track item.product.id + '-' + item.size
+            ) {
+
+              <div class="order-product">
+
+                <div class="order-image">
+                  <img
+                    [src]="item.product.image"
+                    [alt]="item.product.name"
+                  />
+                </div>
+
+                <div class="order-product-details">
+                  <h4>{{ item.product.name }}</h4>
+                  <p>{{ item.product.brand }}</p>
+                  <p>Size: {{ item.size }}</p>
+                  <p>Quantity: {{ item.quantity }}</p>
+                </div>
+
+                <strong>
+                  {{
+                    item.product.price * item.quantity
+                      | currency:'INR':'symbol':'1.0-0'
+                  }}
+                </strong>
+
+              </div>
+
+            }
+
+          </div>
+
+          <!-- Order Bottom -->
+          <div class="order-bottom">
+
+            <div class="order-total">
+              <span>Total paid on delivery</span>
+
+              <strong>
+                {{ order.finalTotal | currency:'INR':'symbol':'1.0-0' }}
+              </strong>
+
+              <small>Cash on Delivery</small>
+            </div>
+
+            @if (order.status !== 'Cancelled') {
+
+              <button
+                type="button"
+                class="cancel-order-btn"
+                (click)="confirmCancel(order)"
+                [disabled]="cancelling"
+              >
+                Cancel Order
+              </button>
+
+            } @else {
+
+              <span class="cancelled-message">
+                This order has been cancelled.
+              </span>
+
+            }
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  }
+
+  <!-- Cancel Confirmation Modal -->
+  @if (showCancelConfirmation) {
+
+    <div
+      class="modal-overlay"
+      (click)="closeCancelConfirmation()"
+    >
+
+      <div
+        class="cancel-modal"
+        (click)="$event.stopPropagation()"
+      >
+
+        <div class="cancel-modal-icon">
+          !
+        </div>
+
+        <h2>Cancel Order?</h2>
+
+        <p>
+          Are you sure you want to cancel this order?
+          This action cannot be undone.
+        </p>
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="keep-order-btn"
+            [disabled]="cancelling"
+            (click)="closeCancelConfirmation()"
+          >
+            No, Keep Order
+          </button>
+
+          <button
+            type="button"
+            class="confirm-cancel-btn"
+            [disabled]="cancelling"
+            (click)="cancelOrder()"
+          >
+            {{ cancelling ? 'Cancelling...' : 'Yes, Cancel Order' }}
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+</section>

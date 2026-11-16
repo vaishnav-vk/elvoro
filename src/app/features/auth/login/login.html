@@ -1,0 +1,120 @@
+
+<div class="login-container">
+
+  <div class="login-card">
+
+    <!-- Header -->
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Login to your Elvoro account.</p>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+        />
+
+        @if (
+          loginForm.get('email')?.touched &&
+          loginForm.get('email')?.hasError('required')
+        ) {
+          <small class="error">Email is required.</small>
+        }
+
+        @if (
+          loginForm.get('email')?.dirty &&
+          loginForm.get('email')?.hasError('pattern')
+        ) {
+          <small class="error">
+            Email must start with a letter, not a number.
+          </small>
+        }
+
+        @if (
+          loginForm.get('email')?.dirty &&
+          loginForm.get('email')?.hasError('email') &&
+          !loginForm.get('email')?.hasError('pattern')
+        ) {
+          <small class="error">Enter a valid email address.</small>
+        }
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+
+        @if (
+          loginForm.get('password')?.touched &&
+          loginForm.get('password')?.hasError('required')
+        ) {
+          <small class="error">Password is required.</small>
+        }
+
+        @if (
+          loginForm.get('password')?.dirty &&
+          loginForm.get('password')?.hasError('minlength')
+        ) {
+          <small class="error">
+            Password must contain at least 6 characters.
+          </small>
+        }
+      </div>
+
+      <!-- Error Message -->
+      @if (errorMessage) {
+        <div class="error-message">
+          <span>!</span>
+          {{ errorMessage }}
+        </div>
+      }
+
+      <!-- Success Message -->
+      @if (successMessage) {
+        <div class="success-message">
+          <span>✓</span>
+          {{ successMessage }}
+        </div>
+      }
+
+      <!-- Login Button -->
+      <button
+        type="submit"
+        class="login-button"
+        [disabled]="loading"
+      >
+        @if (loading) {
+          Logging in...
+        } @else {
+          Login
+        }
+      </button>
+
+    </form>
+
+    <!-- Register Link -->
+    <div class="register-link">
+      <p>
+        Don't have an account?
+        <a routerLink="/register">Create Account</a>
+      </p>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,776 @@
+
+<section class="products-page">
+
+  <!-- PAGE HEADING -->
+  <div class="page-heading">
+
+    <div>
+      <p class="eyebrow">INVENTORY MANAGEMENT</p>
+      <h1>Products</h1>
+      <p>Manage your Elvoro shoe collection.</p>
+    </div>
+
+    <button
+      class="add-btn"
+      type="button"
+      (click)="openAddForm()"
+    >
+      + Add Product
+    </button>
+
+  </div>
+
+
+  <!-- PRODUCT DATA -->
+  @if (products$ | async; as products) {
+
+    <!-- STATISTICS -->
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <span>Total Products</span>
+        <h2>{{ products.length }}</h2>
+      </div>
+
+      <div class="stat-card">
+        <span>Categories</span>
+        <h2>{{ getCategories(products).length }}</h2>
+      </div>
+
+      <div class="stat-card">
+        <span>Brands</span>
+        <h2>{{ getBrands(products).length }}</h2>
+      </div>
+
+    </div>
+
+
+    <!-- SEARCH AND FILTERS -->
+    <div class="products-toolbar">
+
+      <input
+        type="text"
+        placeholder="Search products..."
+        [value]="searchText"
+        (input)="onSearch($any($event.target).value)"
+      />
+
+      <select
+        [value]="selectedCategory"
+        (change)="onCategoryChange($any($event.target).value)"
+      >
+        <option value="All">All Categories</option>
+
+        @for (category of getCategories(products); track category) {
+          <option [value]="category">
+            {{ category }}
+          </option>
+        }
+      </select>
+
+      <select
+        [value]="selectedBrand"
+        (change)="onBrandChange($any($event.target).value)"
+      >
+        <option value="All">All Brands</option>
+
+        @for (brand of getBrands(products); track brand) {
+          <option [value]="brand">
+            {{ brand }}
+          </option>
+        }
+      </select>
+
+      <select
+        [value]="sortOrder"
+        (change)="onSortChange($any($event.target).value)"
+      >
+        <option value="default">Default sorting</option>
+        <option value="low-high">Price: Low to High</option>
+        <option value="high-low">Price: High to Low</option>
+        <option value="name">Name: A to Z</option>
+      </select>
+
+    </div>
+
+
+    <!-- LOADING -->
+    @if (loading$ | async) {
+      <p class="status">Loading products...</p>
+    }
+
+
+    <!-- ERROR -->
+    @if (error$ | async; as error) {
+      <p class="error-message">{{ error }}</p>
+    }
+
+
+    <!-- PRODUCT TABLE -->
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Brand</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Available Sizes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          @for (
+            product of getPaginatedProducts(products);
+            track product.id
+          ) {
+
+            <tr>
+
+              <!-- PRODUCT -->
+              <td>
+                <div class="product-cell">
+
+                  <img
+                    [src]="product.image"
+                    [alt]="product.name"
+                  />
+
+                  <span>{{ product.name }}</span>
+
+                </div>
+              </td>
+
+              <!-- BRAND -->
+              <td>{{ product.brand }}</td>
+
+              <!-- CATEGORY -->
+              <td>{{ product.category }}</td>
+
+              <!-- PRICE -->
+              <td>
+                {{ product.price | currency:'INR':'symbol':'1.0-0' }}
+              </td>
+
+              <!-- SIZES -->
+              <td>
+                <div class="sizes">
+
+                  @for (size of product.sizes; track size) {
+                    <span>{{ size }}</span>
+                  }
+
+                </div>
+              </td>
+
+              <!-- ACTIONS -->
+              <td>
+
+                <div class="actions">
+
+                  <button
+                    type="button"
+                    class="view-action"
+                    (click)="viewProduct(product)"
+                  >
+                    View
+                  </button>
+
+                  <button
+                    type="button"
+                    class="edit-action"
+                    (click)="openEditForm(product)"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    type="button"
+                    class="delete-action"
+                    (click)="openDeleteModal(product)"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          } @empty {
+
+            <tr>
+              <td colspan="6" class="empty">
+                No products found.
+              </td>
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- PAGINATION -->
+    @if (getTotalPages(products) > 1) {
+
+      <div class="pagination">
+
+        <button
+          type="button"
+          (click)="changePage(currentPage - 1, products)"
+          [disabled]="currentPage === 1"
+        >
+          Previous
+        </button>
+
+        <span>
+          Page {{ currentPage }} of {{ getTotalPages(products) }}
+        </span>
+
+        <button
+          type="button"
+          (click)="changePage(currentPage + 1, products)"
+          [disabled]="currentPage === getTotalPages(products)"
+        >
+          Next
+        </button>
+
+      </div>
+
+    }
+
+  }
+
+</section>
+
+
+<!-- ================================= -->
+<!-- ADD PRODUCT MODAL -->
+<!-- ================================= -->
+
+@if (showAddForm) {
+
+  <div class="modal-overlay">
+
+    <div class="product-modal">
+
+      <div class="modal-header">
+
+        <div>
+          <h2>Add New Product</h2>
+          <p>Enter the shoe details below.</p>
+        </div>
+
+        <button
+          type="button"
+          class="close-btn"
+          (click)="closeAddForm()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <form (ngSubmit)="saveEditProduct()" #editForm="ngForm">
+
+  <!-- Product Name -->
+  <div class="form-group">
+    <label>Product Name *</label>
+
+    <input
+      type="text"
+      name="editName"
+      [(ngModel)]="editProduct.name"
+      required
+      minlength="3"
+      #editName="ngModel"
+    />
+
+    @if (editName.invalid && (editName.touched || editFormSubmitted)) {
+      <small class="validation-error">
+        Product name must contain at least 3 characters.
+      </small>
+    }
+  </div>
+
+  <!-- Brand -->
+  <div class="form-group">
+    <label>Brand *</label>
+
+    <input
+      type="text"
+      name="editBrand"
+      [(ngModel)]="editProduct.brand"
+      required
+      #editBrand="ngModel"
+    />
+
+    @if (editBrand.invalid && (editBrand.touched || editFormSubmitted)) {
+      <small class="validation-error">Brand is required.</small>
+    }
+  </div>
+
+  <!-- Price -->
+  <div class="form-group">
+    <label>Price *</label>
+
+    <input
+      type="number"
+      name="editPrice"
+      [(ngModel)]="editProduct.price"
+      required
+      min="1"
+      #editPrice="ngModel"
+    />
+
+    @if (editPrice.invalid && (editPrice.touched || editFormSubmitted)) {
+      <small class="validation-error">Price must be greater than ₹0.</small>
+    }
+  </div>
+
+  <!-- Category -->
+  <div class="form-group">
+    <label>Category *</label>
+
+    <select
+      name="editCategory"
+      [(ngModel)]="editProduct.category"
+      required
+      #editCategory="ngModel"
+    >
+      <option value="" disabled>Select category</option>
+      <option value="Running">Running</option>
+      <option value="Casual">Casual</option>
+      <option value="Sports">Sports</option>
+      <option value="Lifestyle">Lifestyle</option>
+      <option value="Formal">Formal</option>
+    </select>
+
+    @if (editCategory.invalid && (editCategory.touched || editFormSubmitted)) {
+      <small class="validation-error">Select a category.</small>
+    }
+  </div>
+
+  <!-- Image -->
+  <div class="form-group">
+    <label>Image URL *</label>
+
+    <input
+      type="url"
+      name="editImage"
+      [(ngModel)]="editProduct.image"
+      required
+      pattern="https?://.+"
+      #editImage="ngModel"
+    />
+
+    @if (editImage.invalid && (editImage.touched || editFormSubmitted)) {
+      <small class="validation-error">Enter a valid image URL.</small>
+    }
+  </div>
+
+  <!-- Description -->
+  <div class="form-group">
+    <label>Description *</label>
+
+    <textarea
+      name="editDescription"
+      [(ngModel)]="editProduct.description"
+      required
+      minlength="10"
+      #editDescription="ngModel"
+    ></textarea>
+
+    @if (editDescription.invalid && (editDescription.touched || editFormSubmitted)) {
+      <small class="validation-error">
+        Description must contain at least 10 characters.
+      </small>
+    }
+  </div>
+
+  <!-- Sizes -->
+  <div class="form-group">
+    <label>Available Sizes *</label>
+
+    <div class="size-options">
+      @for (size of availableSizes; track size) {
+        <label class="size-option">
+          <input
+            type="checkbox"
+            [checked]="editProduct.sizes.includes(size)"
+            (change)="toggleEditSize(size, $event)"
+          />
+          {{ size }}
+        </label>
+      }
+    </div>
+
+    @if (editFormSubmitted && editProduct.sizes.length === 0) {
+      <small class="validation-error">
+        Select at least one shoe size.
+      </small>
+    }
+  </div>
+
+  <div class="modal-actions">
+    <button type="button" class="cancel-btn" (click)="closeEditForm()">
+      Cancel
+    </button>
+
+    <button type="submit" class="save-btn">
+      Save Changes
+    </button>
+  </div>
+
+</form>
+
+    </div>
+
+  </div>
+
+}
+
+
+<!-- ================================= -->
+<!-- VIEW PRODUCT MODAL -->
+<!-- ================================= -->
+
+@if (showViewModal) {
+
+  @if (selectedProduct; as product) {
+
+    <div class="modal-overlay">
+
+      <div class="product-modal">
+
+        <div class="modal-header">
+
+          <div>
+            <h2>Product Details</h2>
+            <p>Complete shoe information.</p>
+          </div>
+
+          <button
+            type="button"
+            class="close-btn"
+            (click)="closeViewModal()"
+          >
+            ×
+          </button>
+
+        </div>
+
+        <img
+          class="view-product-image"
+          [src]="product.image"
+          [alt]="product.name"
+        />
+
+        <div class="detail-grid">
+
+          <p><strong>Name:</strong> {{ product.name }}</p>
+          <p><strong>Brand:</strong> {{ product.brand }}</p>
+          <p><strong>Category:</strong> {{ product.category }}</p>
+          <p><strong>Price:</strong> ₹{{ product.price }}</p>
+          <p><strong>Description:</strong> {{ product.description }}</p>
+          <p><strong>Sizes:</strong> {{ product.sizes.join(', ') }}</p>
+
+        </div>
+
+        <h3>Specifications</h3>
+
+        <div class="detail-grid">
+
+          <p><strong>Material:</strong> {{ product.specifications.material }}</p>
+          <p><strong>Sole:</strong> {{ product.specifications.sole }}</p>
+          <p><strong>Color:</strong> {{ product.specifications.color }}</p>
+          <p><strong>Closure:</strong> {{ product.specifications.closure }}</p>
+          <p><strong>Weight:</strong> {{ product.specifications.weight }}</p>
+          <p><strong>Occasion:</strong> {{ product.specifications.occasion }}</p>
+          <p><strong>Origin:</strong> {{ product.specifications.countryOfOrigin }}</p>
+
+        </div>
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            (click)="closeViewModal()"
+          >
+            Close
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+}
+
+
+<!-- ================================= -->
+<!-- EDIT PRODUCT MODAL -->
+<!-- ================================= -->
+
+@if (showEditForm) {
+
+  <div class="modal-overlay">
+
+    <div class="product-modal">
+
+      <div class="modal-header">
+
+        <div>
+          <h2>Edit Product</h2>
+          <p>Update your product information.</p>
+        </div>
+
+        <button
+          type="button"
+          class="close-btn"
+          (click)="closeEditForm()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <form (ngSubmit)="saveEditProduct()">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Product Name *</label>
+
+            <input
+              name="editName"
+              [(ngModel)]="editProduct.name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Brand *</label>
+
+            <input
+              name="editBrand"
+              [(ngModel)]="editProduct.brand"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Price *</label>
+
+            <input
+              type="number"
+              name="editPrice"
+              [(ngModel)]="editProduct.price"
+              min="1"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Category *</label>
+
+            <input
+              name="editCategory"
+              [(ngModel)]="editProduct.category"
+              required
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label>Image URL</label>
+
+            <input
+              type="url"
+              name="editImage"
+              [(ngModel)]="editProduct.image"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label>Description</label>
+
+            <textarea
+              name="editDescription"
+              rows="3"
+              [(ngModel)]="editProduct.description"
+            ></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label>Available Sizes</label>
+
+            <div class="size-options">
+
+              @for (size of [6, 7, 8, 9, 10, 11, 12]; track size) {
+
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="editProduct.sizes.includes(size)"
+                    (change)="
+                      editProduct.sizes =
+                        $any($event.target).checked
+                          ? [...editProduct.sizes, size].sort((a,b) => a-b)
+                          : editProduct.sizes.filter(s => s !== size)
+                    "
+                  />
+
+                  {{ size }}
+                </label>
+
+              }
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Material</label>
+            <input
+              name="editMaterial"
+              [(ngModel)]="editProduct.specifications.material"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Sole</label>
+            <input
+              name="editSole"
+              [(ngModel)]="editProduct.specifications.sole"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Color</label>
+            <input
+              name="editColor"
+              [(ngModel)]="editProduct.specifications.color"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Closure</label>
+            <input
+              name="editClosure"
+              [(ngModel)]="editProduct.specifications.closure"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Weight</label>
+            <input
+              name="editWeight"
+              [(ngModel)]="editProduct.specifications.weight"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Occasion</label>
+            <input
+              name="editOccasion"
+              [(ngModel)]="editProduct.specifications.occasion"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label>Country of Origin</label>
+
+            <input
+              name="editOrigin"
+              [(ngModel)]="editProduct.specifications.countryOfOrigin"
+            />
+          </div>
+
+        </div>
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            (click)="closeEditForm()"
+          >
+            Cancel
+          </button>
+
+          <button type="submit" class="save-btn">
+            Update Product
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+}
+
+
+<!-- ================================= -->
+<!-- DELETE CONFIRMATION MODAL -->
+<!-- ================================= -->
+
+@if (showDeleteModal) {
+
+  @if (productToDelete; as product) {
+
+    <div class="modal-overlay">
+
+      <div class="delete-modal">
+
+        <div class="delete-icon">!</div>
+
+        <h2>Delete Product?</h2>
+
+        <p>
+          Are you sure you want to delete
+          <strong>{{ product.name }}</strong>?
+          This action cannot be undone.
+        </p>
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            (click)="closeDeleteModal()"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="button"
+            class="confirm-delete-btn"
+            (click)="confirmDelete()"
+          >
+            Yes, Delete
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+}

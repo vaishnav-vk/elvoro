@@ -1,0 +1,158 @@
+<section class="about-page">
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero">
+
+    <div class="hero-content">
+
+      <p class="eyebrow">GET TO KNOW US / ELVORO</p>
+
+      <h1>
+        We believe every step
+        <span>has a style.</span>
+      </h1>
+
+      <p class="hero-description">
+        Elvoro is more than a sneaker destination.
+        It's about expressing your identity, finding your style
+        and moving through everyday life with confidence.
+      </p>
+
+      <a routerLink="/products" class="explore-button">
+        Explore Collection
+        <span>→</span>
+      </a>
+
+    </div>
+
+    <div class="hero-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1000"
+        alt="Stylish sneaker collection"
+      />
+
+      <div class="image-label">
+        <span>ELVORO COLLECTION</span>
+        <strong>STEP INTO YOUR STYLE.</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- OUR STORY -->
+  <section class="story-section">
+
+    <div class="section-label">
+      <span>01</span>
+      OUR STORY
+    </div>
+
+    <div class="story-content">
+
+      <h2>
+        Built around
+        <span>your everyday style.</span>
+      </h2>
+
+      <div class="story-text">
+
+        <p>
+          At Elvoro, we believe sneakers are more than just footwear.
+          They are part of how you move, how you dress and how you
+          express yourself.
+        </p>
+
+        <p>
+          Our goal is to bring together modern sneaker styles,
+          everyday comfort and a simple shopping experience.
+          Whether you're heading out, meeting friends or enjoying
+          your everyday routine, find a pair that feels like you.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BRAND VALUES -->
+  <section class="values-section">
+
+    <div class="values-heading">
+
+      <div>
+        <p class="eyebrow">02 / WHAT DEFINES US</p>
+        <h2>Our values.</h2>
+      </div>
+
+      <p>
+        The little things that make every step meaningful.
+      </p>
+
+    </div>
+
+    <div class="values-grid">
+
+      @for (value of values; track value.title) {
+
+        <article class="value-card">
+
+          <div class="value-icon">
+            {{ value.icon }}
+          </div>
+
+          <h3>{{ value.title }}</h3>
+
+          <p>{{ value.description }}</p>
+
+        </article>
+
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- BRAND STATEMENT -->
+  <section class="brand-statement">
+
+    <p class="eyebrow">03 / THE ELVORO MINDSET</p>
+
+    <h2>
+      Walk your way.
+      <span>Own your style.</span>
+    </h2>
+
+    <p>
+      Your journey. Your identity. Your rules.
+    </p>
+
+  </section>
+
+
+  <!-- FINAL CTA -->
+  <section class="about-cta">
+
+    <div>
+      <p class="eyebrow">FIND YOUR NEXT FAVOURITE PAIR</p>
+
+      <h2>Ready to find your style?</h2>
+
+      <p>
+        Discover sneakers that move with you.
+      </p>
+    </div>
+
+    <a routerLink="/products" class="explore-button">
+      Shop Elvoro
+      <span>→</span>
+    </a>
+
+  </section>
+
+</section>
